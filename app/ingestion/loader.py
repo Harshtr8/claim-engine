@@ -36,4 +36,4 @@ if __name__ == "__main__":
     print(f"Loaded {len(pages)} pages")
     for page in pages[:3]:
         print(f"\n--- Page {page['page']} ---")
-        print(page["text"][:500])
+        print(page["text"][:500])dnknfkr
