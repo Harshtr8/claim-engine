@@ -52,6 +52,10 @@ class ClaimCase(BaseModel):
         default=None,
         ge=0
     )
+    icu_expense: Optional[float] = Field(
+        default=None,
+        ge=0
+    )
     doctor_expense: Optional[float] = Field(
         default=None,
         ge=0
