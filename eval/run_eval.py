@@ -35,20 +35,19 @@ def load_json(path: Path) -> Any:
 
 def load_cases(path: Path) -> list[dict]:
     """
-    Load cases from either:
-
-    1. A JSON list
-    2. A JSON object containing a cases list
-    3. A directory containing JSON files
+    Load cases from:
+      - a directory of JSON files
+      - a JSON list
+      - {"cases": [...]}
+      - a single JSON object
     """
 
     if path.is_dir():
 
         cases = []
 
-        files = sorted(path.glob("*.json"))
+        for file_path in sorted(path.glob("*.json")):
 
-        for file_path in files:
             data = load_json(file_path)
 
             if isinstance(data, list):
@@ -56,7 +55,7 @@ def load_cases(path: Path) -> list[dict]:
 
             elif isinstance(data, dict):
 
-                if "cases" in data and isinstance(data["cases"], list):
+                if isinstance(data.get("cases"), list):
                     cases.extend(data["cases"])
 
                 else:
@@ -71,12 +70,14 @@ def load_cases(path: Path) -> list[dict]:
 
     if isinstance(data, dict):
 
-        if "cases" in data and isinstance(data["cases"], list):
+        if isinstance(data.get("cases"), list):
             return data["cases"]
 
         return [data]
 
-    raise ValueError(f"Unsupported case format: {path}")
+    raise ValueError(
+        f"Unsupported case format: {path}"
+    )
 
 
 def load_expected(path: Path) -> dict[str, dict]:
@@ -89,7 +90,7 @@ def load_expected(path: Path) -> dict[str, dict]:
         }
     }
 
-    or:
+    and:
 
     [
         {
@@ -112,95 +113,193 @@ def load_expected(path: Path) -> dict[str, dict]:
 
             case_id = item.get("case_id")
 
-            if not case_id:
-                continue
-
-            output[case_id] = item
+            if case_id:
+                output[case_id] = item
 
         return output
 
-    raise ValueError(f"Unsupported expected-outcomes format: {path}")
+    raise ValueError(
+        f"Unsupported expected-outcomes format: {path}"
+    )
 
 
 # ============================================================
-# SERIALIZATION HELPERS
+# OBJECT HELPERS
+# ============================================================
+
+def get_field(obj: Any, field: str, default=None):
+    """
+    Safely retrieve a field from:
+      - dict
+      - Pydantic v2 model
+      - Pydantic v1 model
+      - normal Python object
+    """
+
+    if obj is None:
+        return default
+
+    if isinstance(obj, dict):
+        return obj.get(field, default)
+
+    return getattr(obj, field, default)
+
+
+def to_jsonable(obj: Any):
+    """
+    Convert Pydantic objects / nested objects into
+    JSON-serializable Python structures.
+    """
+
+    if obj is None:
+        return None
+
+    if isinstance(obj, (str, int, float, bool)):
+        return obj
+
+    if isinstance(obj, list):
+        return [
+            to_jsonable(item)
+            for item in obj
+        ]
+
+    if isinstance(obj, tuple):
+        return [
+            to_jsonable(item)
+            for item in obj
+        ]
+
+    if isinstance(obj, dict):
+        return {
+            str(key): to_jsonable(value)
+            for key, value in obj.items()
+        }
+
+    if hasattr(obj, "model_dump"):
+        return to_jsonable(
+            obj.model_dump()
+        )
+
+    if hasattr(obj, "dict"):
+        return to_jsonable(
+            obj.dict()
+        )
+
+    if hasattr(obj, "__dict__"):
+        return to_jsonable(
+            vars(obj)
+        )
+
+    return str(obj)
+
+
+# ============================================================
+# CITATION SERIALIZATION
 # ============================================================
 
 def serialize_citation(citation: Any) -> dict:
-    """
-    Convert a Pydantic Citation object or dictionary
-    into a JSON-safe dictionary.
-    """
 
     if citation is None:
         return {}
 
-    # Pydantic v2
-    if hasattr(citation, "model_dump"):
-        return citation.model_dump()
-
-    # Pydantic v1
-    if hasattr(citation, "dict"):
-        return citation.dict()
-
     if isinstance(citation, dict):
-        return dict(citation)
+        return {
+            "claim": citation.get("claim", ""),
+            "source": citation.get("source", ""),
+            "page": citation.get("page"),
+            "section": citation.get("section", ""),
+            "chunk_id": citation.get("chunk_id", ""),
+        }
 
     return {
-        "claim": getattr(citation, "claim", ""),
-        "source": getattr(citation, "source", ""),
-        "page": getattr(citation, "page", None),
-        "section": getattr(citation, "section", ""),
-        "chunk_id": getattr(citation, "chunk_id", ""),
+        "claim": get_field(
+            citation,
+            "claim",
+            "",
+        ),
+        "source": get_field(
+            citation,
+            "source",
+            "",
+        ),
+        "page": get_field(
+            citation,
+            "page",
+            None,
+        ),
+        "section": get_field(
+            citation,
+            "section",
+            "",
+        ),
+        "chunk_id": get_field(
+            citation,
+            "chunk_id",
+            "",
+        ),
     }
 
 
+# ============================================================
+# TRACE SERIALIZATION
+# ============================================================
+
 def serialize_trace_step(step: Any) -> dict:
-    """
-    Convert trace objects into JSON-safe dictionaries.
-    """
 
     if step is None:
         return {}
-
-    if hasattr(step, "model_dump"):
-        return step.model_dump()
-
-    if hasattr(step, "dict"):
-        return step.dict()
 
     if isinstance(step, dict):
         return dict(step)
 
     return {
-        "agent": getattr(step, "agent", ""),
-        "action": getattr(step, "action", ""),
-        "retrieval_count": getattr(step, "retrieval_count", None),
-        "validation_status": getattr(step, "validation_status", None),
-        "elapsed_ms": getattr(step, "elapsed_ms", None),
+        "agent": get_field(
+            step,
+            "agent",
+            "",
+        ),
+        "action": get_field(
+            step,
+            "action",
+            "",
+        ),
+        "retrieval_count": get_field(
+            step,
+            "retrieval_count",
+            None,
+        ),
+        "validation_status": get_field(
+            step,
+            "validation_status",
+            None,
+        ),
+        "elapsed_ms": get_field(
+            step,
+            "elapsed_ms",
+            None,
+        ),
     }
 
 
+# ============================================================
+# VALIDATION SERIALIZATION
+# ============================================================
+
 def serialize_validation(validation: Any) -> dict:
-    """
-    Convert validation result into JSON-safe dictionary.
-    """
 
     if validation is None:
         return {}
-
-    if hasattr(validation, "model_dump"):
-        return validation.model_dump()
-
-    if hasattr(validation, "dict"):
-        return validation.dict()
 
     if isinstance(validation, dict):
         return dict(validation)
 
     return {
-        "status": getattr(validation, "status", ""),
-        "unsupported_claims": getattr(
+        "status": get_field(
+            validation,
+            "status",
+            "",
+        ),
+        "unsupported_claims": get_field(
             validation,
             "unsupported_claims",
             [],
@@ -208,18 +307,38 @@ def serialize_validation(validation: Any) -> dict:
     }
 
 
-def get_output_field(output: Any, field: str, default=None):
+# ============================================================
+# DECISION NORMALIZATION
+# ============================================================
+
+def normalize_decision(decision: Any) -> str:
     """
-    Safely read a field from either a Pydantic object or dict.
+    Convert DecisionOutput.decision into a plain string.
+
+    Handles:
+      - string
+      - enum
+      - Pydantic value
+      - arbitrary objects
     """
 
-    if output is None:
-        return default
+    if decision is None:
+        return ""
 
-    if isinstance(output, dict):
-        return output.get(field, default)
+    if isinstance(decision, str):
+        return decision
 
-    return getattr(output, field, default)
+    # Enum-like objects
+    value = getattr(
+        decision,
+        "value",
+        None,
+    )
+
+    if value is not None:
+        return str(value)
+
+    return str(decision)
 
 
 # ============================================================
@@ -233,83 +352,97 @@ def evaluate_case(
     case_type: str,
 ) -> dict:
 
-    case_id = raw_case.get("case_id", "UNKNOWN")
+    case_id = str(
+        raw_case.get(
+            "case_id",
+            "UNKNOWN",
+        )
+    )
 
-    expected_decision = expected_entry.get(
-        "expected_decision"
+    expected_decision = normalize_decision(
+        expected_entry.get(
+            "expected_decision",
+            "",
+        )
     )
 
     # --------------------------------------------------------
-    # Adapt raw case into ClaimCase
+    # Adapt case
     # --------------------------------------------------------
 
-    claim = adapt_public_case(raw_case)
-
-    # --------------------------------------------------------
-    # Run claim engine
-    # --------------------------------------------------------
-
-    output = engine.analyze(claim)
-
-    # --------------------------------------------------------
-    # Read decision
-    # --------------------------------------------------------
-
-    actual_decision = get_output_field(
-        output,
-        "decision",
-        "",
+    claim = adapt_public_case(
+        raw_case
     )
 
-    confidence = get_output_field(
+    # --------------------------------------------------------
+    # Run engine
+    # --------------------------------------------------------
+
+    output = engine.analyze(
+        claim
+    )
+
+    # --------------------------------------------------------
+    # Extract output fields
+    # --------------------------------------------------------
+
+    actual_decision = normalize_decision(
+        get_field(
+            output,
+            "decision",
+            "",
+        )
+    )
+
+    confidence = get_field(
         output,
         "confidence",
         None,
     )
 
-    payable_amount = get_output_field(
+    payable_amount = get_field(
         output,
         "payable_amount",
         None,
     )
 
-    key_findings = get_output_field(
+    key_findings = get_field(
         output,
         "key_findings",
         [],
-    )
+    ) or []
 
-    applicable_limits = get_output_field(
+    applicable_limits = get_field(
         output,
         "applicable_limits",
         [],
-    )
+    ) or []
 
-    missing_evidence = get_output_field(
+    missing_evidence = get_field(
         output,
         "missing_evidence",
         [],
-    )
+    ) or []
 
-    deductions = get_output_field(
+    deductions = get_field(
         output,
         "deductions",
         [],
-    )
+    ) or []
 
-    citations_raw = get_output_field(
+    citations_raw = get_field(
         output,
         "citations",
         [],
-    )
+    ) or []
 
-    trace_raw = get_output_field(
+    trace_raw = get_field(
         output,
         "trace",
         [],
-    )
+    ) or []
 
-    validation_raw = get_output_field(
+    validation_raw = get_field(
         output,
         "validation",
         None,
@@ -319,50 +452,78 @@ def evaluate_case(
     # Serialize citations
     # --------------------------------------------------------
 
-    citations = [
-        serialize_citation(citation)
-        for citation in (citations_raw or [])
-    ]
+    citations = []
 
-    # Remove empty citation objects if any
-    citations = [
-        citation
-        for citation in citations
-        if citation
-    ]
+    for citation in citations_raw:
+
+        serialized = serialize_citation(
+            citation
+        )
+
+        if serialized:
+            citations.append(
+                serialized
+            )
 
     # --------------------------------------------------------
     # Serialize trace
     # --------------------------------------------------------
 
-    trace = [
-        serialize_trace_step(step)
-        for step in (trace_raw or [])
-    ]
+    trace = []
 
-    trace = [
-        step
-        for step in trace
-        if step
-    ]
+    for step in trace_raw:
+
+        serialized = serialize_trace_step(
+            step
+        )
+
+        if serialized:
+            trace.append(
+                serialized
+            )
 
     # --------------------------------------------------------
     # Serialize validation
     # --------------------------------------------------------
 
-    validation = serialize_validation(validation_raw)
+    validation = serialize_validation(
+        validation_raw
+    )
+
+    # --------------------------------------------------------
+    # Convert nested values
+    # --------------------------------------------------------
+
+    key_findings = to_jsonable(
+        key_findings
+    )
+
+    applicable_limits = to_jsonable(
+        applicable_limits
+    )
+
+    missing_evidence = to_jsonable(
+        missing_evidence
+    )
+
+    deductions = to_jsonable(
+        deductions
+    )
 
     # --------------------------------------------------------
     # Correctness
     # --------------------------------------------------------
 
-    correct = actual_decision == expected_decision
+    correct = (
+        actual_decision
+        == expected_decision
+    )
 
     # --------------------------------------------------------
-    # Final result
+    # Final case result
     # --------------------------------------------------------
 
-    result = {
+    return {
         "case_id": case_id,
         "case_type": case_type,
 
@@ -379,26 +540,23 @@ def evaluate_case(
         "deductions": deductions,
 
         # IMPORTANT:
-        # Store the complete citation objects.
+        # Complete citation objects are persisted.
         "citation_count": len(citations),
         "citations": citations,
 
-        # Store complete trace without hidden chain-of-thought.
+        # Trace contains operational information only.
         "trace": trace,
 
-        # Store validation result.
         "validation": validation,
 
         "missing_evidence_count": len(
-            missing_evidence or []
+            missing_evidence
         ),
 
         "deduction_count": len(
-            deductions or []
+            deductions
         ),
     }
-
-    return result
 
 
 # ============================================================
@@ -416,17 +574,21 @@ def evaluate_cases(
 
     for raw_case in cases:
 
-        case_id = raw_case.get(
-            "case_id",
-            "UNKNOWN",
+        case_id = str(
+            raw_case.get(
+                "case_id",
+                "UNKNOWN",
+            )
         )
 
         if case_id not in expected:
+
             print(
                 f"{case_id:<10} "
                 f"Expected outcome missing "
                 f"[SKIP]"
             )
+
             continue
 
         result = evaluate_case(
@@ -442,6 +604,8 @@ def evaluate_cases(
             else "FAIL"
         )
 
+        # IMPORTANT:
+        # actual/expected are now guaranteed strings.
         print(
             f"{case_id:<10} "
             f"Expected={result['expected']:<25} "
@@ -449,7 +613,9 @@ def evaluate_cases(
             f"[{status}]"
         )
 
-        results.append(result)
+        results.append(
+            result
+        )
 
     return results
 
@@ -458,9 +624,13 @@ def evaluate_cases(
 # METRICS
 # ============================================================
 
-def calculate_metrics(results: list[dict]) -> dict:
+def calculate_metrics(
+    results: list[dict],
+) -> dict:
 
-    total = len(results)
+    total = len(
+        results
+    )
 
     correct = sum(
         1
@@ -471,7 +641,8 @@ def calculate_metrics(results: list[dict]) -> dict:
     abstentions = sum(
         1
         for result in results
-        if result.get("actual") == "NEEDS_REVIEW"
+        if result.get("actual")
+        == "NEEDS_REVIEW"
     )
 
     accuracy = (
@@ -504,7 +675,7 @@ def main():
     print()
 
     # --------------------------------------------------------
-    # Validate input files
+    # Validate inputs
     # --------------------------------------------------------
 
     required_paths = [
@@ -522,7 +693,7 @@ def main():
             )
 
     # --------------------------------------------------------
-    # Load data
+    # Load cases
     # --------------------------------------------------------
 
     public_cases = load_cases(
@@ -542,28 +713,25 @@ def main():
     )
 
     print(
-        f"Loaded public cases : {len(public_cases)}"
+        f"Loaded public cases : "
+        f"{len(public_cases)}"
     )
 
     print(
-        f"Loaded custom cases : {len(custom_cases)}"
+        f"Loaded custom cases : "
+        f"{len(custom_cases)}"
     )
 
     print()
 
     # --------------------------------------------------------
-    # Initialize engine ONCE
-    #
-    # This avoids repeatedly loading:
-    # - embedding model
-    # - BM25 index
-    # - reranker
+    # Initialize engine once
     # --------------------------------------------------------
 
     engine = ClaimEngine()
 
     # --------------------------------------------------------
-    # Public cases
+    # PUBLIC
     # --------------------------------------------------------
 
     print("=" * 80)
@@ -578,7 +746,7 @@ def main():
     )
 
     # --------------------------------------------------------
-    # Custom cases
+    # CUSTOM
     # --------------------------------------------------------
 
     print()
@@ -619,7 +787,28 @@ def main():
     )
 
     # --------------------------------------------------------
-    # Summary
+    # Citation metrics
+    # --------------------------------------------------------
+
+    total_citations = sum(
+        result.get(
+            "citation_count",
+            0,
+        )
+        for result in all_results
+    )
+
+    cases_with_citations = sum(
+        1
+        for result in all_results
+        if result.get(
+            "citation_count",
+            0,
+        ) > 0
+    )
+
+    # --------------------------------------------------------
+    # SUMMARY
     # --------------------------------------------------------
 
     print()
@@ -677,53 +866,24 @@ def main():
         f"{overall_metrics['abstentions']}"
     )
 
-    # --------------------------------------------------------
-    # Citation statistics
-    # --------------------------------------------------------
-
-    total_citations = sum(
-        result.get("citation_count", 0)
-        for result in all_results
-    )
-
-    cases_with_citations = sum(
-        1
-        for result in all_results
-        if result.get("citation_count", 0) > 0
-    )
-
     print()
     print("=" * 80)
     print("CITATION SUMMARY")
     print("=" * 80)
 
     print(
-        f"Total citations    : "
+        f"Total citations     : "
         f"{total_citations}"
     )
 
     print(
         f"Cases with citations: "
-        f"{cases_with_citations}/{len(all_results)}"
+        f"{cases_with_citations}/"
+        f"{len(all_results)}"
     )
 
     # --------------------------------------------------------
-    # Detailed results
-    # --------------------------------------------------------
-
-    print()
-    print("Detailed Results:")
-
-    print(
-        json.dumps(
-            all_results,
-            indent=2,
-            ensure_ascii=False,
-        )
-    )
-
-    # --------------------------------------------------------
-    # Final JSON
+    # SAVE RESULTS
     # --------------------------------------------------------
 
     output = {
@@ -746,10 +906,6 @@ def main():
         "results": all_results,
     }
 
-    # --------------------------------------------------------
-    # Save
-    # --------------------------------------------------------
-
     with open(
         OUTPUT_FILE,
         "w",
@@ -763,9 +919,25 @@ def main():
             ensure_ascii=False,
         )
 
+    # --------------------------------------------------------
+    # Detailed output
+    # --------------------------------------------------------
+
+    print()
+    print("Detailed Results:")
+
+    print(
+        json.dumps(
+            all_results,
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
+
     print()
     print(
-        f"Results saved to: {OUTPUT_FILE}"
+        f"Results saved to: "
+        f"{OUTPUT_FILE}"
     )
 
 
