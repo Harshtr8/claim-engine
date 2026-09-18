@@ -1,0 +1,140 @@
+{
+  "total_cases": 12,
+  "correct": 9,
+  "accuracy": 0.75,
+  "abstentions": 2,
+  "results": [
+    {
+      "case_id": "PUB-001",
+      "expected": "ADMISSIBLE_WITH_LIMITS",
+      "actual": "ADMISSIBLE_WITH_LIMITS",
+      "correct": true,
+      "confidence": 0.85,
+      "payable_amount": 163200.0,
+      "citation_count": 8,
+      "missing_evidence_count": 0,
+      "deduction_count": 2
+    },
+    {
+      "case_id": "PUB-002",
+      "expected": "NOT_ADMISSIBLE",
+      "actual": "ADMISSIBLE_WITH_LIMITS",
+      "correct": false,
+      "confidence": 0.85,
+      "payable_amount": 70000.0,
+      "citation_count": 8,
+      "missing_evidence_count": 0,
+      "deduction_count": 1
+    },
+    {
+      "case_id": "PUB-003",
+      "expected": "NOT_ADMISSIBLE",
+      "actual": "ADMISSIBLE_WITH_LIMITS",
+      "correct": false,
+      "confidence": 0.85,
+      "payable_amount": 142000.0,
+      "citation_count": 8,
+      "missing_evidence_count": 0,
+      "deduction_count": 1
+    },
+    {
+      "case_id": "PUB-004",
+      "expected": "ADMISSIBLE_WITH_LIMITS",
+      "actual": "ADMISSIBLE_WITH_LIMITS",
+      "correct": true,
+      "confidence": 0.85,
+      "payable_amount": 105000.0,
+      "citation_count": 8,
+      "missing_evidence_count": 0,
+      "deduction_count": 1
+    },
+    {
+      "case_id": "PUB-005",
+      "expected": "ADMISSIBLE",
+      "actual": "ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.8,
+      "payable_amount": 65000.0,
+      "citation_count": 8,
+      "missing_evidence_count": 0,
+      "deduction_count": 0
+    },
+    {
+      "case_id": "PUB-006",
+      "expected": "NEEDS_REVIEW",
+      "actual": "NEEDS_REVIEW",
+      "correct": true,
+      "confidence": 0.4,
+      "payable_amount": null,
+      "citation_count": 8,
+      "missing_evidence_count": 1,
+      "deduction_count": 1
+    },
+    {
+      "case_id": "PUB-007",
+      "expected": "ADMISSIBLE_WITH_LIMITS",
+      "actual": "ADMISSIBLE_WITH_LIMITS",
+      "correct": true,
+      "confidence": 0.85,
+      "payable_amount": 906500.0,
+      "citation_count": 8,
+      "missing_evidence_count": 0,
+      "deduction_count": 4
+    },
+    {
+      "case_id": "PUB-008",
+      "expected": "NOT_ADMISSIBLE",
+      "actual": "NOT_ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.9,
+      "payable_amount": 0.0,
+      "citation_count": 8,
+      "missing_evidence_count": 0,
+      "deduction_count": 1
+    },
+    {
+      "case_id": "PUB-009",
+      "expected": "ADMISSIBLE",
+      "actual": "ADMISSIBLE_WITH_LIMITS",
+      "correct": false,
+      "confidence": 0.85,
+      "payable_amount": 186800.0,
+      "citation_count": 8,
+      "missing_evidence_count": 0,
+      "deduction_count": 1
+    },
+    {
+      "case_id": "PUB-010",
+      "expected": "ADMISSIBLE",
+      "actual": "ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.8,
+      "payable_amount": 80000.0,
+      "citation_count": 8,
+      "missing_evidence_count": 0,
+      "deduction_count": 0
+    },
+    {
+      "case_id": "PUB-011",
+      "expected": "NEEDS_REVIEW",
+      "actual": "NEEDS_REVIEW",
+      "correct": true,
+      "confidence": 0.4,
+      "payable_amount": null,
+      "citation_count": 8,
+      "missing_evidence_count": 1,
+      "deduction_count": 1
+    },
+    {
+      "case_id": "PUB-012",
+      "expected": "NOT_ADMISSIBLE",
+      "actual": "NOT_ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.9,
+      "payable_amount": 0.0,
+      "citation_count": 8,
+      "missing_evidence_count": 0,
+      "deduction_count": 1
+    }
+  ]
+}

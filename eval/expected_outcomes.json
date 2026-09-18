@@ -1,0 +1,38 @@
+{
+  "PUB-001": {
+    "expected_decision": "ADMISSIBLE_WITH_LIMITS"
+  },
+  "PUB-002": {
+    "expected_decision": "NOT_ADMISSIBLE"
+  },
+  "PUB-003": {
+    "expected_decision": "NOT_ADMISSIBLE"
+  },
+  "PUB-004": {
+    "expected_decision": "ADMISSIBLE_WITH_LIMITS"
+  },
+  "PUB-005": {
+    "expected_decision": "ADMISSIBLE"
+  },
+  "PUB-006": {
+    "expected_decision": "NEEDS_REVIEW"
+  },
+  "PUB-007": {
+    "expected_decision": "ADMISSIBLE_WITH_LIMITS"
+  },
+  "PUB-008": {
+    "expected_decision": "NOT_ADMISSIBLE"
+  },
+  "PUB-009": {
+    "expected_decision": "ADMISSIBLE"
+  },
+  "PUB-010": {
+    "expected_decision": "ADMISSIBLE"
+  },
+  "PUB-011": {
+    "expected_decision": "NEEDS_REVIEW"
+  },
+  "PUB-012": {
+    "expected_decision": "NOT_ADMISSIBLE"
+  }
+}
