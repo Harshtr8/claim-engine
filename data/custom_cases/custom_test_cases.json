@@ -1,0 +1,158 @@
+[
+  {
+    "case_id": "CUS-001",
+    "policy_start_date": "2023-01-01",
+    "claim_date": "2026-09-10",
+    "sum_insured_inr": 500000,
+    "treatment": {
+      "type": "inpatient",
+      "diagnosis": "Acute appendicitis",
+      "admission_hours": 72
+    },
+    "hospital": {
+      "name": "City Hospital",
+      "network_provider": true
+    },
+    "evidence_context": {
+      "hospital_registered": true,
+      "hospital_minimum_criteria_documented": true,
+      "medical_necessity_confirmed": true
+    },
+    "expenses_inr": {
+      "room": 12000,
+      "doctor_fees": 40000,
+      "medicines_diagnostics": 80000,
+      "pre_hospitalization": 5000,
+      "post_hospitalization": 7000,
+      "ambulance": 800
+    },
+    "documents": [
+      "claim_form",
+      "discharge_summary",
+      "itemized_bill",
+      "doctor_prescription"
+    ],
+    "expense_timing": {
+      "pre_hospitalization_days_before_admission": 20,
+      "post_hospitalization_days_after_discharge": 30,
+      "same_condition_confirmed": true
+    }
+  },
+  {
+    "case_id": "CUS-002",
+    "policy_start_date": "2023-01-01",
+    "claim_date": "2026-09-10",
+    "sum_insured_inr": 500000,
+    "treatment": {
+      "type": "inpatient",
+      "diagnosis": "Pneumonia",
+      "admission_hours": 96
+    },
+    "hospital": {
+      "name": "Metro Hospital",
+      "network_provider": true
+    },
+    "evidence_context": {
+      "hospital_registered": true,
+      "hospital_minimum_criteria_documented": true,
+      "medical_necessity_confirmed": true
+    },
+    "expenses_inr": {
+      "room": 30000,
+      "icu": 60000,
+      "doctor_fees": 200000,
+      "medicines_diagnostics": 250000,
+      "ambulance": 1500
+    },
+    "documents": [
+      "claim_form",
+      "discharge_summary",
+      "itemized_bill"
+    ]
+  },
+  {
+    "case_id": "CUS-003",
+    "policy_start_date": "2024-01-01",
+    "claim_date": "2026-09-10",
+    "sum_insured_inr": 500000,
+    "treatment": {
+      "type": "inpatient",
+      "diagnosis": "Diabetes Mellitus",
+      "pre_existing": true,
+      "admission_hours": 72
+    },
+    "hospital": {
+      "name": "General Hospital",
+      "network_provider": true
+    },
+    "expenses_inr": {
+      "room": 5000,
+      "doctor_fees": 20000,
+      "medicines_diagnostics": 30000
+    },
+    "documents": [
+      "claim_form",
+      "discharge_summary",
+      "itemized_bill"
+    ]
+  },
+  {
+    "case_id": "CUS-004",
+    "policy_start_date": "2023-01-01",
+    "claim_date": "2026-09-10",
+    "sum_insured_inr": 500000,
+    "treatment": {
+      "type": "inpatient",
+      "diagnosis": "Gallbladder infection",
+      "admission_hours": 72
+    },
+    "hospital": {
+      "name": "Unknown Hospital"
+    },
+    "evidence_context": {
+      "hospital_registered": null,
+      "hospital_minimum_criteria_documented": null,
+      "medical_necessity_confirmed": null
+    },
+    "expenses_inr": {
+      "room": 5000,
+      "doctor_fees": 20000,
+      "medicines_diagnostics": 30000
+    },
+    "documents": [
+      "claim_form"
+    ]
+  },
+  {
+    "case_id": "CUS-005",
+    "policy_start_date": "2023-01-01",
+    "claim_date": "2026-09-10",
+    "sum_insured_inr": 500000,
+    "treatment": {
+      "type": "inpatient",
+      "diagnosis": "Experimental cancer therapy",
+      "experimental": true,
+      "admission_hours": 96
+    },
+    "hospital": {
+      "name": "Research Hospital",
+      "network_provider": true
+    },
+    "evidence_context": {
+      "hospital_registered": true,
+      "hospital_minimum_criteria_documented": true,
+      "medical_necessity_confirmed": true
+    },
+    "expenses_inr": {
+      "room": 5000,
+      "doctor_fees": 30000,
+      "medicines_diagnostics": 100000
+    },
+    "documents": [
+      "claim_form",
+      "discharge_summary",
+      "itemized_bill",
+      "treatment_protocol"
+    ]
+  }
+]

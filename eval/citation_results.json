@@ -1,0 +1,114 @@
+{
+  "cases_evaluated": 17,
+  "total_citations": 136,
+  "valid_citations": 0,
+  "invalid_citations": 136,
+  "citation_validity": 0.0,
+  "cases_with_citations": 17,
+  "cases_without_citations": 0,
+  "citation_coverage": 1.0,
+  "results": [
+    {
+      "case_id": "PUB-001",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-002",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-003",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-004",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-005",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-006",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-007",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-008",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-009",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-010",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-011",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "PUB-012",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "CUS-001",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "CUS-002",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "CUS-003",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "CUS-004",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "case_id": "CUS-005",
+      "citation_count": 8,
+      "valid": true,
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "total_tests": 10,
+  "hit_at_5": 10,
+  "hit_at_5_accuracy": 1.0,
+  "mean_reciprocal_rank": 1.0,
+  "results": [
+    {
+      "id": "R-001",
+      "query": "general waiting period 30 days continuous coverage exception",
+      "hit_at_5": true,
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "retrieved_count": 5,
+      "top_chunks": [
+        {
+          "chunk_id": "policy_p9_chunk_01",
+          "page": 9,
+          "section": "Waiting Period"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_01",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p9_chunk_03",
+          "page": 9,
+          "section": "Waiting Period"
+        },
+        {
+          "chunk_id": "policy_p9_chunk_02",
+          "page": 9,
+          "section": "Waiting Period"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_02",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        }
+      ]
+    },
+    {
+      "id": "R-002",
+      "query": "pre-existing disease signs symptoms diagnosis medical advice treatment 48 months",
+      "hit_at_5": true,
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "retrieved_count": 5,
+      "top_chunks": [
+        {
+          "chunk_id": "policy_p5_chunk_01",
+          "page": 5,
+          "section": "benefits"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_01",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p3_chunk_01",
+          "page": 3,
+          "section": "benefits"
+        },
+        {
+          "chunk_id": "policy_p1_chunk_03",
+          "page": 1,
+          "section": "DEFINITIONS"
+        },
+        {
+          "chunk_id": "policy_p10_chunk_02",
+          "page": 10,
+          "section": "What We cover"
+        }
+      ]
+    },
+    {
+      "id": "R-003",
+      "query": "portability transfer credit pre-existing disease waiting period previous insurer",
+      "hit_at_5": true,
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "retrieved_count": 5,
+      "top_chunks": [
+        {
+          "chunk_id": "policy_p5_chunk_01",
+          "page": 5,
+          "section": "benefits"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_01",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p13_chunk_04",
+          "page": 13,
+          "section": "benefits"
+        },
+        {
+          "chunk_id": "policy_p9_chunk_02",
+          "page": 9,
+          "section": "Waiting Period"
+        },
+        {
+          "chunk_id": "policy_p9_chunk_01",
+          "page": 9,
+          "section": "Waiting Period"
+        }
+      ]
+    },
+    {
+      "id": "R-004",
+      "query": "hospitalization minimum 24 consecutive hours day care treatment",
+      "hit_at_5": true,
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "retrieved_count": 5,
+      "top_chunks": [
+        {
+          "chunk_id": "policy_p7_chunk_03",
+          "page": 7,
+          "section": "WHAT WE COVER"
+        },
+        {
+          "chunk_id": "policy_p3_chunk_02",
+          "page": 3,
+          "section": "benefits"
+        },
+        {
+          "chunk_id": "policy_p3_chunk_01",
+          "page": 3,
+          "section": "benefits"
+        },
+        {
+          "chunk_id": "policy_p2_chunk_03",
+          "page": 2,
+          "section": "UNKNOWN"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_02",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        }
+      ]
+    },
+    {
+      "id": "R-005",
+      "query": "room rent 1% basic sum insured ICU 2% doctor fees 25%",
+      "hit_at_5": true,
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "retrieved_count": 5,
+      "top_chunks": [
+        {
+          "chunk_id": "policy_p7_chunk_02",
+          "page": 7,
+          "section": "WHAT WE COVER"
+        },
+        {
+          "chunk_id": "policy_p7_chunk_03",
+          "page": 7,
+          "section": "WHAT WE COVER"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_02",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_03",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p5_chunk_03",
+          "page": 5,
+          "section": "benefits"
+        }
+      ]
+    },
+    {
+      "id": "R-006",
+      "query": "medicines diagnostics other expenses 40% sum insured",
+      "hit_at_5": true,
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "retrieved_count": 5,
+      "top_chunks": [
+        {
+          "chunk_id": "policy_p7_chunk_02",
+          "page": 7,
+          "section": "WHAT WE COVER"
+        },
+        {
+          "chunk_id": "policy_p7_chunk_03",
+          "page": 7,
+          "section": "WHAT WE COVER"
+        },
+        {
+          "chunk_id": "policy_p5_chunk_03",
+          "page": 5,
+          "section": "benefits"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_04",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p10_chunk_03",
+          "page": 10,
+          "section": "What We cover"
+        }
+      ]
+    },
+    {
+      "id": "R-007",
+      "query": "ambulance charges 1% basic sum insured 1000 whichever less",
+      "hit_at_5": true,
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "retrieved_count": 5,
+      "top_chunks": [
+        {
+          "chunk_id": "policy_p8_chunk_02",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_03",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p10_chunk_03",
+          "page": 10,
+          "section": "What We cover"
+        },
+        {
+          "chunk_id": "policy_p7_chunk_03",
+          "page": 7,
+          "section": "WHAT WE COVER"
+        },
+        {
+          "chunk_id": "policy_p7_chunk_02",
+          "page": 7,
+          "section": "WHAT WE COVER"
+        }
+      ]
+    },
+    {
+      "id": "R-008",
+      "query": "pre hospitalization maximum 30 days post hospitalization maximum 60 days",
+      "hit_at_5": true,
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "retrieved_count": 5,
+      "top_chunks": [
+        {
+          "chunk_id": "policy_p8_chunk_03",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_02",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p10_chunk_03",
+          "page": 10,
+          "section": "What We cover"
+        },
+        {
+          "chunk_id": "policy_p10_chunk_01",
+          "page": 10,
+          "section": "What We cover"
+        },
+        {
+          "chunk_id": "policy_p10_chunk_02",
+          "page": 10,
+          "section": "What We cover"
+        }
+      ]
+    },
+    {
+      "id": "R-009",
+      "query": "cosmetic aesthetic treatment plastic surgery injury disease exclusion",
+      "hit_at_5": true,
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "retrieved_count": 5,
+      "top_chunks": [
+        {
+          "chunk_id": "policy_p9_chunk_03",
+          "page": 9,
+          "section": "Waiting Period"
+        },
+        {
+          "chunk_id": "policy_p2_chunk_02",
+          "page": 2,
+          "section": "UNKNOWN"
+        },
+        {
+          "chunk_id": "policy_p6_chunk_03",
+          "page": 6,
+          "section": "Exclusions"
+        },
+        {
+          "chunk_id": "policy_p1_chunk_02",
+          "page": 1,
+          "section": "DEFINITIONS"
+        },
+        {
+          "chunk_id": "policy_p1_chunk_03",
+          "page": 1,
+          "section": "DEFINITIONS"
+        }
+      ]
+    },
+    {
+      "id": "R-010",
+      "query": "unproven experimental treatment excluded policy",
+      "hit_at_5": true,
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "retrieved_count": 5,
+      "top_chunks": [
+        {
+          "chunk_id": "policy_p6_chunk_01",
+          "page": 6,
+          "section": "Exclusions"
+        },
+        {
+          "chunk_id": "policy_p1_chunk_03",
+          "page": 1,
+          "section": "DEFINITIONS"
+        },
+        {
+          "chunk_id": "policy_p2_chunk_04",
+          "page": 2,
+          "section": "UNKNOWN"
+        },
+        {
+          "chunk_id": "policy_p8_chunk_01",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE"
+        },
+        {
+          "chunk_id": "policy_p10_chunk_01",
+          "page": 10,
+          "section": "What We cover"
+        }
+      ]
+    }
+  ]
+}

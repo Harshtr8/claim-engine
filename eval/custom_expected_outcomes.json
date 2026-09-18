@@ -1,0 +1,17 @@
+{
+  "CUS-001": {
+    "expected_decision": "ADMISSIBLE"
+  },
+  "CUS-002": {
+    "expected_decision": "ADMISSIBLE_WITH_LIMITS"
+  },
+  "CUS-003": {
+    "expected_decision": "NOT_ADMISSIBLE"
+  },
+  "CUS-004": {
+    "expected_decision": "NEEDS_REVIEW"
+  },
+  "CUS-005": {
+    "expected_decision": "NOT_ADMISSIBLE"
+  }
+}
