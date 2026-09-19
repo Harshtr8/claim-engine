@@ -1,4 +1,16 @@
+from functools import lru_cache
+
 from FlagEmbedding import FlagReranker
+
+
+@lru_cache(maxsize=2)
+def get_reranker(model_name: str) -> FlagReranker:
+    print(f"Loading reranker model: {model_name}")
+
+    return FlagReranker(
+        model_name,
+        use_fp16=False,
+    )
 
 
 class PolicyReranker:
@@ -7,12 +19,8 @@ class PolicyReranker:
         self,
         model_name: str = "BAAI/bge-reranker-base",
     ):
-        print("Loading reranker...")
-
-        self.reranker = FlagReranker(
-            model_name,
-            use_fp16=False,
-        )
+        self.model_name = model_name
+        self.reranker = get_reranker(model_name)
 
     def rerank(
         self,
@@ -23,6 +31,20 @@ class PolicyReranker:
 
         if not candidates:
             return []
+
+        # No need to rerank when there are fewer candidates
+        # than the requested final result count.
+        if len(candidates) <= top_k:
+            results = []
+
+            for candidate in candidates:
+                item = candidate.copy()
+                item["reranker_score"] = float(
+                    item.get("rrf_score", 0.0)
+                )
+                results.append(item)
+
+            return results
 
         pairs = [
             [query, candidate["text"]]
