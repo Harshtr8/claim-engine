@@ -1,18 +1,18 @@
 {
   "public": {
     "total": 12,
-    "correct": 12,
-    "accuracy": 1.0,
-    "abstentions": 2,
+    "correct": 5,
+    "accuracy": 0.4167,
+    "abstentions": 9,
     "cases": [
       {
         "case_id": "PUB-001",
         "case_type": "Public",
         "expected": "ADMISSIBLE_WITH_LIMITS",
-        "actual": "ADMISSIBLE_WITH_LIMITS",
-        "correct": true,
-        "confidence": 0.85,
-        "payable_amount": 153000.0,
+        "actual": "NEEDS_REVIEW",
+        "correct": false,
+        "confidence": 0.4,
+        "payable_amount": null,
         "key_findings": [
           "Claim occurs after the general 30-day waiting period.",
           "Hospitalization meets the 24-hour minimum duration requirement."
@@ -24,7 +24,11 @@
           "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
           "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
         ],
-        "missing_evidence": [],
+        "missing_evidence": [
+          "Hospital registration status is not documented.",
+          "Hospital minimum eligibility criteria are not documented.",
+          "Medical necessity is not documented."
+        ],
         "deductions": [
           {
             "category": "room",
@@ -67,23 +71,23 @@
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 5,
             "section": "benefits",
             "chunk_id": "policy_p5_chunk_01"
           },
           {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_02"
           },
           {
             "claim": "Claim occurs after the general 30-day waiting period.",
@@ -95,9 +99,9 @@
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 2,
-            "section": "UNKNOWN",
-            "chunk_id": "policy_p2_chunk_03"
+            "page": 4,
+            "section": "benefits",
+            "chunk_id": "policy_p4_chunk_04"
           }
         ],
         "trace": [
@@ -110,44 +114,44 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 39 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 79117.218
+            "elapsed_ms": 40474.231
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
-            "elapsed_ms": null
+            "elapsed_ms": 1.2271000014152378
           },
           {
             "agent": "DecisionAgent",
-            "action": "Generated ADMISSIBLE_WITH_LIMITS from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+            "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
             "retrieval_count": 10,
             "validation_status": null,
             "elapsed_ms": null
           }
         ],
         "validation": {
-          "status": "VALID",
+          "status": "VALID_ABSTENTION",
           "unsupported_claims": []
         },
-        "missing_evidence_count": 0,
+        "missing_evidence_count": 3,
         "deduction_count": 2
       },
       {
         "case_id": "PUB-002",
         "case_type": "Public",
         "expected": "NOT_ADMISSIBLE",
-        "actual": "NOT_ADMISSIBLE",
-        "correct": true,
-        "confidence": 0.9,
-        "payable_amount": 0.0,
+        "actual": "NEEDS_REVIEW",
+        "correct": false,
+        "confidence": 0.4,
+        "payable_amount": null,
         "key_findings": [
           "Hospitalization meets the 24-hour minimum duration requirement.",
-          "Claim falls within the general 30-day waiting period."
+          "General 30-day waiting period has not been completed."
         ],
         "applicable_limits": [
           "Room rent: 1% of Basic Sum Insured per day.",
@@ -156,7 +160,11 @@
           "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
           "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
         ],
-        "missing_evidence": [],
+        "missing_evidence": [
+          "Hospital registration status is not documented.",
+          "Hospital minimum eligibility criteria are not documented.",
+          "Medical necessity is not documented."
+        ],
         "deductions": [],
         "citation_count": 8,
         "citations": [
@@ -166,13 +174,6 @@
             "page": 8,
             "section": "WHAT WE EXCLUDE",
             "chunk_id": "policy_p8_chunk_02"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
           },
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -191,16 +192,9 @@
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 5,
-            "section": "benefits",
-            "chunk_id": "policy_p5_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_03"
           },
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -212,9 +206,23 @@
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 2,
-            "section": "UNKNOWN",
-            "chunk_id": "policy_p2_chunk_03"
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_02"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 4,
+            "section": "benefits",
+            "chunk_id": "policy_p4_chunk_04"
           }
         ],
         "trace": [
@@ -227,45 +235,45 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 37 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 69454.784
+            "elapsed_ms": 36918.86
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
-            "elapsed_ms": null
+            "elapsed_ms": 0.03090000245720148
           },
           {
             "agent": "DecisionAgent",
-            "action": "Generated NOT_ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+            "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
             "retrieval_count": 10,
             "validation_status": null,
             "elapsed_ms": null
           }
         ],
         "validation": {
-          "status": "VALID",
+          "status": "VALID_ABSTENTION",
           "unsupported_claims": []
         },
-        "missing_evidence_count": 0,
+        "missing_evidence_count": 3,
         "deduction_count": 0
       },
       {
         "case_id": "PUB-003",
         "case_type": "Public",
         "expected": "NOT_ADMISSIBLE",
-        "actual": "NOT_ADMISSIBLE",
-        "correct": true,
-        "confidence": 0.9,
-        "payable_amount": 0.0,
+        "actual": "NEEDS_REVIEW",
+        "correct": false,
+        "confidence": 0.4,
+        "payable_amount": null,
         "key_findings": [
           "Claim occurs after the general 30-day waiting period.",
-          "Hospitalization meets the 24-hour minimum duration requirement.",
-          "Pre-existing disease remains within the applicable waiting period."
+          "Pre-existing disease waiting period has been satisfied.",
+          "Hospitalization meets the 24-hour minimum duration requirement."
         ],
         "applicable_limits": [
           "Room rent: 1% of Basic Sum Insured per day.",
@@ -274,7 +282,11 @@
           "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
           "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
         ],
-        "missing_evidence": [],
+        "missing_evidence": [
+          "Hospital registration status is not documented.",
+          "Hospital minimum eligibility criteria are not documented.",
+          "Medical necessity is not documented."
+        ],
         "deductions": [],
         "citation_count": 8,
         "citations": [
@@ -295,23 +307,16 @@
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 5,
             "section": "benefits",
             "chunk_id": "policy_p5_chunk_01"
           },
           {
-            "claim": "Claim occurs after the general 30-day waiting period.",
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 3,
-            "section": "benefits",
-            "chunk_id": "policy_p3_chunk_01"
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_03"
           },
           {
             "claim": "Claim occurs after the general 30-day waiting period.",
@@ -328,11 +333,18 @@
             "chunk_id": "policy_p7_chunk_02"
           },
           {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_02"
+          },
+          {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 2,
-            "section": "UNKNOWN",
-            "chunk_id": "policy_p2_chunk_03"
+            "page": 4,
+            "section": "benefits",
+            "chunk_id": "policy_p4_chunk_04"
           }
         ],
         "trace": [
@@ -345,31 +357,31 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 37 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 68481.046
+            "elapsed_ms": 36779.803
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
-            "elapsed_ms": null
+            "elapsed_ms": 0.039000005926936865
           },
           {
             "agent": "DecisionAgent",
-            "action": "Generated NOT_ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+            "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
             "retrieval_count": 10,
             "validation_status": null,
             "elapsed_ms": null
           }
         ],
         "validation": {
-          "status": "VALID",
+          "status": "VALID_ABSTENTION",
           "unsupported_claims": []
         },
-        "missing_evidence_count": 0,
+        "missing_evidence_count": 3,
         "deduction_count": 0
       },
       {
@@ -388,7 +400,6 @@
           "ICU: 2% of Basic Sum Insured per day.",
           "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
           "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-          "Domiciliary treatment: 20% of Basic Sum Insured.",
           "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
         ],
         "missing_evidence": [],
@@ -398,7 +409,7 @@
             "claimed": 105000.0,
             "allowed": 100000.0,
             "deduction": 5000.0,
-            "reason": "Domiciliary treatment expenses exceed the applicable 20% Basic Sum Insured aggregate sub-limit."
+            "reason": "Domiciliary treatment exceeds the applicable 20% Basic Sum Insured limit."
           }
         ],
         "citation_count": 8,
@@ -425,11 +436,11 @@
             "chunk_id": "policy_p5_chunk_01"
           },
           {
-            "claim": "Room rent: 1% of Basic Sum Insured per day.",
+            "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 8,
             "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
+            "chunk_id": "policy_p8_chunk_01"
           },
           {
             "claim": "Room rent: 1% of Basic Sum Insured per day.",
@@ -439,25 +450,25 @@
             "chunk_id": "policy_p7_chunk_02"
           },
           {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 3,
-            "section": "benefits",
-            "chunk_id": "policy_p3_chunk_01"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_01"
-          },
-          {
             "claim": "on, etc. 17. Any expense under Domiciliary Hospitalisation for 18. Pre and Post Hospitalisation treatment 19. Any treatment not exceeding three days. 20. Treatment of following...",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 10,
             "section": "What We cover",
             "chunk_id": "policy_p10_chunk_02"
+          },
+          {
+            "claim": "s are carried out;  maintains daily records of patients and will make these accessible to the insurance company‟s authorized personnel Day Care Treatment Day care treatment ref...",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 2,
+            "section": "UNKNOWN",
+            "chunk_id": "policy_p2_chunk_03"
+          },
+          {
+            "claim": "Room rent: 1% of Basic Sum Insured per day.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 1,
+            "section": "DEFINITIONS",
+            "chunk_id": "policy_p1_chunk_02"
           }
         ],
         "trace": [
@@ -470,17 +481,17 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 168665.255
+            "elapsed_ms": 36719.904
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
-            "elapsed_ms": null
+            "elapsed_ms": 23.786900012055412
           },
           {
             "agent": "DecisionAgent",
@@ -506,8 +517,7 @@
         "confidence": 0.8,
         "payable_amount": 65000.0,
         "key_findings": [
-          "Claim occurs after the general 30-day waiting period.",
-          "No applicable policy sub-limit deduction was identified from the supplied claim facts."
+          "Claim occurs after the general 30-day waiting period."
         ],
         "applicable_limits": [
           "Room rent: 1% of Basic Sum Insured per day.",
@@ -528,11 +538,11 @@
             "chunk_id": "policy_p8_chunk_02"
           },
           {
-            "claim": "Room rent: 1% of Basic Sum Insured per day.",
+            "claim": "UNIVERSAL SOMPO GENERAL INSURANCE CO LTD 5 CSC- Individual Health Insurance-Policy Wording UNIHLIP18004V011718 IRDAI Reg No:134  The In -patient Hospitalization claim for such...",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_01"
           },
           {
             "claim": "Room rent: 1% of Basic Sum Insured per day.",
@@ -542,11 +552,25 @@
             "chunk_id": "policy_p7_chunk_03"
           },
           {
-            "claim": "UNIVERSAL SOMPO GENERAL INSURANCE CO LTD 5 CSC- Individual Health Insurance-Policy Wording UNIHLIP18004V011718 IRDAI Reg No:134  The In -patient Hospitalization claim for such...",
+            "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 5,
             "section": "benefits",
-            "chunk_id": "policy_p5_chunk_01"
+            "chunk_id": "policy_p5_chunk_03"
+          },
+          {
+            "claim": "Room rent: 1% of Basic Sum Insured per day.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_02"
           },
           {
             "claim": "Claim occurs after the general 30-day waiting period.",
@@ -560,21 +584,7 @@
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 9,
             "section": "Waiting Period",
-            "chunk_id": "policy_p9_chunk_02"
-          },
-          {
-            "claim": "Room rent: 1% of Basic Sum Insured per day.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
-          },
-          {
-            "claim": "on, etc. 17. Any expense under Domiciliary Hospitalisation for 18. Pre and Post Hospitalisation treatment 19. Any treatment not exceeding three days. 20. Treatment of following...",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 10,
-            "section": "What We cover",
-            "chunk_id": "policy_p10_chunk_02"
+            "chunk_id": "policy_p9_chunk_01"
           }
         ],
         "trace": [
@@ -587,17 +597,17 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 69817.461
+            "elapsed_ms": 37290.111000000004
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
-            "elapsed_ms": null
+            "elapsed_ms": 0.034199998481199145
           },
           {
             "agent": "DecisionAgent",
@@ -664,20 +674,6 @@
             "chunk_id": "policy_p7_chunk_03"
           },
           {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 3,
-            "section": "benefits",
-            "chunk_id": "policy_p3_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
-          },
-          {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 5,
@@ -687,9 +683,23 @@
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_02"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_01"
           },
           {
             "claim": "Claim occurs after the general 30-day waiting period.",
@@ -701,9 +711,9 @@
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 2,
-            "section": "UNKNOWN",
-            "chunk_id": "policy_p2_chunk_03"
+            "page": 10,
+            "section": "What We cover",
+            "chunk_id": "policy_p10_chunk_02"
           }
         ],
         "trace": [
@@ -716,17 +726,17 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 68061.924
+            "elapsed_ms": 36634.744
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
-            "elapsed_ms": null
+            "elapsed_ms": 0.05050000618211925
           },
           {
             "agent": "DecisionAgent",
@@ -747,10 +757,10 @@
         "case_id": "PUB-007",
         "case_type": "Public",
         "expected": "ADMISSIBLE_WITH_LIMITS",
-        "actual": "ADMISSIBLE_WITH_LIMITS",
-        "correct": true,
-        "confidence": 0.85,
-        "payable_amount": 716000.0,
+        "actual": "NEEDS_REVIEW",
+        "correct": false,
+        "confidence": 0.4,
+        "payable_amount": null,
         "key_findings": [
           "Claim occurs after the general 30-day waiting period.",
           "Hospitalization meets the 24-hour minimum duration requirement."
@@ -762,7 +772,11 @@
           "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
           "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
         ],
-        "missing_evidence": [],
+        "missing_evidence": [
+          "Hospital registration status is not documented.",
+          "Hospital minimum eligibility criteria are not documented.",
+          "Medical necessity is not documented."
+        ],
         "deductions": [
           {
             "category": "room",
@@ -810,20 +824,6 @@
             "chunk_id": "policy_p7_chunk_03"
           },
           {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 3,
-            "section": "benefits",
-            "chunk_id": "policy_p3_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
-          },
-          {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 5,
@@ -833,127 +833,23 @@
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 2,
-            "section": "UNKNOWN",
-            "chunk_id": "policy_p2_chunk_03"
-          }
-        ],
-        "trace": [
-          {
-            "agent": "CaseAnalysisAgent",
-            "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
-            "retrieval_count": 0,
-            "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 0.0
-          },
-          {
-            "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
-            "retrieval_count": 10,
-            "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 68482.878
-          },
-          {
-            "agent": "CoverageAgent",
-            "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
-            "retrieval_count": 10,
-            "validation_status": null,
-            "elapsed_ms": null
-          },
-          {
-            "agent": "DecisionAgent",
-            "action": "Generated ADMISSIBLE_WITH_LIMITS from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
-            "retrieval_count": 10,
-            "validation_status": null,
-            "elapsed_ms": null
-          }
-        ],
-        "validation": {
-          "status": "VALID",
-          "unsupported_claims": []
-        },
-        "missing_evidence_count": 0,
-        "deduction_count": 4
-      },
-      {
-        "case_id": "PUB-008",
-        "case_type": "Public",
-        "expected": "NOT_ADMISSIBLE",
-        "actual": "NOT_ADMISSIBLE",
-        "correct": true,
-        "confidence": 0.9,
-        "payable_amount": 0.0,
-        "key_findings": [
-          "Claim occurs after the general 30-day waiting period.",
-          "Hospitalization meets the 24-hour minimum duration requirement.",
-          "Cosmetic or aesthetic treatment is excluded unless it qualifies under the policy exception for plastic surgery relating to Injury or Disease."
-        ],
-        "applicable_limits": [
-          "Room rent: 1% of Basic Sum Insured per day.",
-          "ICU: 2% of Basic Sum Insured per day.",
-          "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
-          "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-          "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
-        ],
-        "missing_evidence": [],
-        "deductions": [],
-        "citation_count": 8,
-        "citations": [
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_02"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_03"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 5,
-            "section": "benefits",
-            "chunk_id": "policy_p5_chunk_01"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 3,
-            "section": "benefits",
-            "chunk_id": "policy_p3_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 8,
             "section": "WHAT WE EXCLUDE",
             "chunk_id": "policy_p8_chunk_03"
           },
           {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_02"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_01"
           },
           {
             "claim": "Claim occurs after the general 30-day waiting period.",
@@ -961,126 +857,6 @@
             "page": 8,
             "section": "WHAT WE EXCLUDE",
             "chunk_id": "policy_p8_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 10,
-            "section": "What We cover",
-            "chunk_id": "policy_p10_chunk_02"
-          }
-        ],
-        "trace": [
-          {
-            "agent": "CaseAnalysisAgent",
-            "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
-            "retrieval_count": 0,
-            "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 0.0
-          },
-          {
-            "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
-            "retrieval_count": 10,
-            "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 69055.992
-          },
-          {
-            "agent": "CoverageAgent",
-            "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
-            "retrieval_count": 10,
-            "validation_status": null,
-            "elapsed_ms": null
-          },
-          {
-            "agent": "DecisionAgent",
-            "action": "Generated NOT_ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
-            "retrieval_count": 10,
-            "validation_status": null,
-            "elapsed_ms": null
-          }
-        ],
-        "validation": {
-          "status": "VALID",
-          "unsupported_claims": []
-        },
-        "missing_evidence_count": 0,
-        "deduction_count": 0
-      },
-      {
-        "case_id": "PUB-009",
-        "case_type": "Public",
-        "expected": "ADMISSIBLE",
-        "actual": "ADMISSIBLE",
-        "correct": true,
-        "confidence": 0.8,
-        "payable_amount": 186800.0,
-        "key_findings": [
-          "Claim occurs after the general 30-day waiting period.",
-          "Hospitalization meets the 24-hour minimum duration requirement.",
-          "Pre-hospitalization expense falls within the permitted 30-day window.",
-          "Post-hospitalization expense falls within the permitted 60-day window and is confirmed for the same condition.",
-          "No applicable policy sub-limit deduction was identified from the supplied claim facts."
-        ],
-        "applicable_limits": [
-          "Room rent: 1% of Basic Sum Insured per day.",
-          "ICU: 2% of Basic Sum Insured per day.",
-          "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
-          "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-          "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
-        ],
-        "missing_evidence": [],
-        "deductions": [],
-        "citation_count": 8,
-        "citations": [
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 5,
-            "section": "benefits",
-            "chunk_id": "policy_p5_chunk_01"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_02"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_03"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 3,
-            "section": "benefits",
-            "chunk_id": "policy_p3_chunk_01"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
           },
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -1100,31 +876,274 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 69176.338
+            "elapsed_ms": 38940.356999999996
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
-            "elapsed_ms": null
+            "elapsed_ms": 0.04199999966658652
           },
           {
             "agent": "DecisionAgent",
-            "action": "Generated ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+            "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
             "retrieval_count": 10,
             "validation_status": null,
             "elapsed_ms": null
           }
         ],
         "validation": {
-          "status": "VALID",
+          "status": "VALID_ABSTENTION",
           "unsupported_claims": []
         },
-        "missing_evidence_count": 0,
+        "missing_evidence_count": 3,
+        "deduction_count": 4
+      },
+      {
+        "case_id": "PUB-008",
+        "case_type": "Public",
+        "expected": "NOT_ADMISSIBLE",
+        "actual": "NEEDS_REVIEW",
+        "correct": false,
+        "confidence": 0.4,
+        "payable_amount": null,
+        "key_findings": [
+          "Claim occurs after the general 30-day waiting period.",
+          "Hospitalization meets the 24-hour minimum duration requirement.",
+          "Cosmetic or aesthetic treatment is excluded unless covered under the applicable injury/disease exception."
+        ],
+        "applicable_limits": [
+          "Room rent: 1% of Basic Sum Insured per day.",
+          "ICU: 2% of Basic Sum Insured per day.",
+          "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
+          "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
+          "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
+        ],
+        "missing_evidence": [
+          "Hospital registration status is not documented.",
+          "Hospital minimum eligibility criteria are not documented.",
+          "Medical necessity is not documented."
+        ],
+        "deductions": [],
+        "citation_count": 8,
+        "citations": [
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_02"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 7,
+            "section": "WHAT WE COVER",
+            "chunk_id": "policy_p7_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_02"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 3,
+            "section": "benefits",
+            "chunk_id": "policy_p3_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 10,
+            "section": "What We cover",
+            "chunk_id": "policy_p10_chunk_02"
+          }
+        ],
+        "trace": [
+          {
+            "agent": "CaseAnalysisAgent",
+            "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
+            "retrieval_count": 0,
+            "validation_status": "NOT_VALIDATED",
+            "elapsed_ms": 0.0
+          },
+          {
+            "agent": "PolicyEvidenceAgent",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
+            "retrieval_count": 10,
+            "validation_status": "NOT_VALIDATED",
+            "elapsed_ms": 37545.759
+          },
+          {
+            "agent": "CoverageAgent",
+            "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
+            "retrieval_count": 10,
+            "validation_status": null,
+            "elapsed_ms": 0.047200010158121586
+          },
+          {
+            "agent": "DecisionAgent",
+            "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+            "retrieval_count": 10,
+            "validation_status": null,
+            "elapsed_ms": null
+          }
+        ],
+        "validation": {
+          "status": "VALID_ABSTENTION",
+          "unsupported_claims": []
+        },
+        "missing_evidence_count": 3,
+        "deduction_count": 0
+      },
+      {
+        "case_id": "PUB-009",
+        "case_type": "Public",
+        "expected": "ADMISSIBLE",
+        "actual": "NEEDS_REVIEW",
+        "correct": false,
+        "confidence": 0.4,
+        "payable_amount": null,
+        "key_findings": [
+          "Claim occurs after the general 30-day waiting period.",
+          "Hospitalization meets the 24-hour minimum duration requirement."
+        ],
+        "applicable_limits": [
+          "Room rent: 1% of Basic Sum Insured per day.",
+          "ICU: 2% of Basic Sum Insured per day.",
+          "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
+          "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
+          "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
+        ],
+        "missing_evidence": [
+          "Hospital registration status is not documented.",
+          "Hospital minimum eligibility criteria are not documented.",
+          "Medical necessity is not documented."
+        ],
+        "deductions": [],
+        "citation_count": 8,
+        "citations": [
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_02"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 7,
+            "section": "WHAT WE COVER",
+            "chunk_id": "policy_p7_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 3,
+            "section": "benefits",
+            "chunk_id": "policy_p3_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_01"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_02"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 4,
+            "section": "benefits",
+            "chunk_id": "policy_p4_chunk_04"
+          }
+        ],
+        "trace": [
+          {
+            "agent": "CaseAnalysisAgent",
+            "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
+            "retrieval_count": 0,
+            "validation_status": "NOT_VALIDATED",
+            "elapsed_ms": 0.0
+          },
+          {
+            "agent": "PolicyEvidenceAgent",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 39 unique candidates, and performed one reranking pass.",
+            "retrieval_count": 10,
+            "validation_status": "NOT_VALIDATED",
+            "elapsed_ms": 38042.019
+          },
+          {
+            "agent": "CoverageAgent",
+            "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
+            "retrieval_count": 10,
+            "validation_status": null,
+            "elapsed_ms": 0.0315000070258975
+          },
+          {
+            "agent": "DecisionAgent",
+            "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+            "retrieval_count": 10,
+            "validation_status": null,
+            "elapsed_ms": null
+          }
+        ],
+        "validation": {
+          "status": "VALID_ABSTENTION",
+          "unsupported_claims": []
+        },
+        "missing_evidence_count": 3,
         "deduction_count": 0
       },
       {
@@ -1136,8 +1155,7 @@
         "confidence": 0.8,
         "payable_amount": 80000.0,
         "key_findings": [
-          "Claim occurs after the general 30-day waiting period.",
-          "No applicable policy sub-limit deduction was identified from the supplied claim facts."
+          "Claim occurs after the general 30-day waiting period."
         ],
         "applicable_limits": [
           "Room rent: 1% of Basic Sum Insured per day.",
@@ -1158,11 +1176,11 @@
             "chunk_id": "policy_p8_chunk_02"
           },
           {
-            "claim": "Room rent: 1% of Basic Sum Insured per day.",
+            "claim": "UNIVERSAL SOMPO GENERAL INSURANCE CO LTD 5 CSC- Individual Health Insurance-Policy Wording UNIHLIP18004V011718 IRDAI Reg No:134  The In -patient Hospitalization claim for such...",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_01"
           },
           {
             "claim": "Room rent: 1% of Basic Sum Insured per day.",
@@ -1172,11 +1190,25 @@
             "chunk_id": "policy_p7_chunk_03"
           },
           {
-            "claim": "UNIVERSAL SOMPO GENERAL INSURANCE CO LTD 5 CSC- Individual Health Insurance-Policy Wording UNIHLIP18004V011718 IRDAI Reg No:134  The In -patient Hospitalization claim for such...",
+            "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 5,
             "section": "benefits",
-            "chunk_id": "policy_p5_chunk_01"
+            "chunk_id": "policy_p5_chunk_03"
+          },
+          {
+            "claim": "Room rent: 1% of Basic Sum Insured per day.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_02"
           },
           {
             "claim": "Claim occurs after the general 30-day waiting period.",
@@ -1190,21 +1222,7 @@
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 9,
             "section": "Waiting Period",
-            "chunk_id": "policy_p9_chunk_02"
-          },
-          {
-            "claim": "Room rent: 1% of Basic Sum Insured per day.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
-          },
-          {
-            "claim": "on, etc. 17. Any expense under Domiciliary Hospitalisation for 18. Pre and Post Hospitalisation treatment 19. Any treatment not exceeding three days. 20. Treatment of following...",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 10,
-            "section": "What We cover",
-            "chunk_id": "policy_p10_chunk_02"
+            "chunk_id": "policy_p9_chunk_01"
           }
         ],
         "trace": [
@@ -1217,17 +1235,17 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 68940.511
+            "elapsed_ms": 37592.001000000004
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
-            "elapsed_ms": null
+            "elapsed_ms": 0.04230000195093453
           },
           {
             "agent": "DecisionAgent",
@@ -1255,7 +1273,7 @@
         "key_findings": [
           "Claim occurs after the general 30-day waiting period.",
           "Hospitalization meets the 24-hour minimum duration requirement.",
-          "No applicable policy sub-limit deduction was identified from the supplied claim facts."
+          "Hospital minimum eligibility criteria are not satisfied."
         ],
         "applicable_limits": [
           "Room rent: 1% of Basic Sum Insured per day.",
@@ -1279,27 +1297,6 @@
             "chunk_id": "policy_p8_chunk_02"
           },
           {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_03"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 5,
-            "section": "benefits",
-            "chunk_id": "policy_p5_chunk_01"
-          },
-          {
             "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 3,
@@ -1307,236 +1304,11 @@
             "chunk_id": "policy_p3_chunk_01"
           },
           {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 4,
-            "section": "benefits",
-            "chunk_id": "policy_p4_chunk_04"
-          }
-        ],
-        "trace": [
-          {
-            "agent": "CaseAnalysisAgent",
-            "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
-            "retrieval_count": 0,
-            "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 0.0
-          },
-          {
-            "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
-            "retrieval_count": 10,
-            "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 68577.698
-          },
-          {
-            "agent": "CoverageAgent",
-            "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
-            "retrieval_count": 10,
-            "validation_status": null,
-            "elapsed_ms": null
-          },
-          {
-            "agent": "DecisionAgent",
-            "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
-            "retrieval_count": 10,
-            "validation_status": null,
-            "elapsed_ms": null
-          }
-        ],
-        "validation": {
-          "status": "VALID_ABSTENTION",
-          "unsupported_claims": []
-        },
-        "missing_evidence_count": 2,
-        "deduction_count": 0
-      },
-      {
-        "case_id": "PUB-012",
-        "case_type": "Public",
-        "expected": "NOT_ADMISSIBLE",
-        "actual": "NOT_ADMISSIBLE",
-        "correct": true,
-        "confidence": 0.9,
-        "payable_amount": 0.0,
-        "key_findings": [
-          "Claim occurs after the general 30-day waiting period.",
-          "Hospitalization meets the 24-hour minimum duration requirement.",
-          "Unproven or experimental treatment is excluded under the policy."
-        ],
-        "applicable_limits": [
-          "Room rent: 1% of Basic Sum Insured per day.",
-          "ICU: 2% of Basic Sum Insured per day.",
-          "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
-          "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-          "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
-        ],
-        "missing_evidence": [],
-        "deductions": [],
-        "citation_count": 8,
-        "citations": [
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_02"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_03"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
-          },
-          {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 5,
             "section": "benefits",
             "chunk_id": "policy_p5_chunk_01"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 3,
-            "section": "benefits",
-            "chunk_id": "policy_p3_chunk_01"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 2,
-            "section": "UNKNOWN",
-            "chunk_id": "policy_p2_chunk_03"
-          }
-        ],
-        "trace": [
-          {
-            "agent": "CaseAnalysisAgent",
-            "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
-            "retrieval_count": 0,
-            "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 0.0
-          },
-          {
-            "agent": "PolicyEvidenceAgent",
-            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
-            "retrieval_count": 10,
-            "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 68730.456
-          },
-          {
-            "agent": "CoverageAgent",
-            "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
-            "retrieval_count": 10,
-            "validation_status": null,
-            "elapsed_ms": null
-          },
-          {
-            "agent": "DecisionAgent",
-            "action": "Generated NOT_ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
-            "retrieval_count": 10,
-            "validation_status": null,
-            "elapsed_ms": null
-          }
-        ],
-        "validation": {
-          "status": "VALID",
-          "unsupported_claims": []
-        },
-        "missing_evidence_count": 0,
-        "deduction_count": 0
-      }
-    ]
-  },
-  "custom": {
-    "total": 5,
-    "correct": 5,
-    "accuracy": 1.0,
-    "abstentions": 1,
-    "cases": [
-      {
-        "case_id": "CUS-001",
-        "case_type": "Custom",
-        "expected": "ADMISSIBLE",
-        "actual": "ADMISSIBLE",
-        "correct": true,
-        "confidence": 0.8,
-        "payable_amount": 144800.0,
-        "key_findings": [
-          "Claim occurs after the general 30-day waiting period.",
-          "Hospitalization meets the 24-hour minimum duration requirement.",
-          "Pre-hospitalization expense falls within the permitted 30-day window.",
-          "Post-hospitalization expense falls within the permitted 60-day window and is confirmed for the same condition.",
-          "No applicable policy sub-limit deduction was identified from the supplied claim facts."
-        ],
-        "applicable_limits": [
-          "Room rent: 1% of Basic Sum Insured per day.",
-          "ICU: 2% of Basic Sum Insured per day.",
-          "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
-          "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-          "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
-        ],
-        "missing_evidence": [],
-        "deductions": [],
-        "citation_count": 8,
-        "citations": [
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 5,
-            "section": "benefits",
-            "chunk_id": "policy_p5_chunk_01"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_02"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
           },
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -1560,11 +1332,11 @@
             "chunk_id": "policy_p9_chunk_02"
           },
           {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_01"
           },
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -1584,17 +1356,264 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 4 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 39 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 47169.452999999994
+            "elapsed_ms": 38275.990999999995
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
+            "elapsed_ms": 0.033899996196851134
+          },
+          {
+            "agent": "DecisionAgent",
+            "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+            "retrieval_count": 10,
+            "validation_status": null,
             "elapsed_ms": null
+          }
+        ],
+        "validation": {
+          "status": "VALID_ABSTENTION",
+          "unsupported_claims": []
+        },
+        "missing_evidence_count": 2,
+        "deduction_count": 0
+      },
+      {
+        "case_id": "PUB-012",
+        "case_type": "Public",
+        "expected": "NOT_ADMISSIBLE",
+        "actual": "NEEDS_REVIEW",
+        "correct": false,
+        "confidence": 0.4,
+        "payable_amount": null,
+        "key_findings": [
+          "Claim occurs after the general 30-day waiting period.",
+          "Hospitalization meets the 24-hour minimum duration requirement.",
+          "Unproven or experimental treatment is excluded under the policy."
+        ],
+        "applicable_limits": [
+          "Room rent: 1% of Basic Sum Insured per day.",
+          "ICU: 2% of Basic Sum Insured per day.",
+          "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
+          "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
+          "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
+        ],
+        "missing_evidence": [
+          "Hospital registration status is not documented.",
+          "Hospital minimum eligibility criteria are not documented.",
+          "Medical necessity is not documented."
+        ],
+        "deductions": [],
+        "citation_count": 8,
+        "citations": [
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_02"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 7,
+            "section": "WHAT WE COVER",
+            "chunk_id": "policy_p7_chunk_03"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_02"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_01"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 10,
+            "section": "What We cover",
+            "chunk_id": "policy_p10_chunk_02"
+          }
+        ],
+        "trace": [
+          {
+            "agent": "CaseAnalysisAgent",
+            "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
+            "retrieval_count": 0,
+            "validation_status": "NOT_VALIDATED",
+            "elapsed_ms": 0.0
+          },
+          {
+            "agent": "PolicyEvidenceAgent",
+            "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 39 unique candidates, and performed one reranking pass.",
+            "retrieval_count": 10,
+            "validation_status": "NOT_VALIDATED",
+            "elapsed_ms": 37867.447
+          },
+          {
+            "agent": "CoverageAgent",
+            "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
+            "retrieval_count": 10,
+            "validation_status": null,
+            "elapsed_ms": 0.030800001695752144
+          },
+          {
+            "agent": "DecisionAgent",
+            "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+            "retrieval_count": 10,
+            "validation_status": null,
+            "elapsed_ms": null
+          }
+        ],
+        "validation": {
+          "status": "VALID_ABSTENTION",
+          "unsupported_claims": []
+        },
+        "missing_evidence_count": 3,
+        "deduction_count": 0
+      }
+    ]
+  },
+  "custom": {
+    "total": 5,
+    "correct": 4,
+    "accuracy": 0.8,
+    "abstentions": 2,
+    "cases": [
+      {
+        "case_id": "CUS-001",
+        "case_type": "Custom",
+        "expected": "ADMISSIBLE",
+        "actual": "ADMISSIBLE",
+        "correct": true,
+        "confidence": 0.8,
+        "payable_amount": 144800.0,
+        "key_findings": [
+          "Claim occurs after the general 30-day waiting period.",
+          "Hospitalization meets the 24-hour minimum duration requirement."
+        ],
+        "applicable_limits": [
+          "Room rent: 1% of Basic Sum Insured per day.",
+          "ICU: 2% of Basic Sum Insured per day.",
+          "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
+          "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
+          "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
+        ],
+        "missing_evidence": [],
+        "deductions": [],
+        "citation_count": 8,
+        "citations": [
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_02"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 7,
+            "section": "WHAT WE COVER",
+            "chunk_id": "policy_p7_chunk_03"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_03"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_01"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_02"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 7,
+            "section": "WHAT WE COVER",
+            "chunk_id": "policy_p7_chunk_02"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_04"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 10,
+            "section": "What We cover",
+            "chunk_id": "policy_p10_chunk_02"
+          }
+        ],
+        "trace": [
+          {
+            "agent": "CaseAnalysisAgent",
+            "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
+            "retrieval_count": 0,
+            "validation_status": "NOT_VALIDATED",
+            "elapsed_ms": 0.0
+          },
+          {
+            "agent": "PolicyEvidenceAgent",
+            "action": "Generated 4 policy queries, combined dense and sparse retrieval, fused 30 unique candidates, and performed one reranking pass.",
+            "retrieval_count": 10,
+            "validation_status": "NOT_VALIDATED",
+            "elapsed_ms": 26582.402
+          },
+          {
+            "agent": "CoverageAgent",
+            "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
+            "retrieval_count": 10,
+            "validation_status": null,
+            "elapsed_ms": 0.10999999358318746
           },
           {
             "agent": "DecisionAgent",
@@ -1671,18 +1690,18 @@
         "citation_count": 8,
         "citations": [
           {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_02"
-          },
-          {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 7,
             "section": "WHAT WE COVER",
             "chunk_id": "policy_p7_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_02"
           },
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -1692,11 +1711,25 @@
             "chunk_id": "policy_p8_chunk_03"
           },
           {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_01"
+          },
+          {
             "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 5,
             "section": "benefits",
             "chunk_id": "policy_p5_chunk_03"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 10,
+            "section": "What We cover",
+            "chunk_id": "policy_p10_chunk_03"
           },
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -1710,21 +1743,7 @@
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 9,
             "section": "Waiting Period",
-            "chunk_id": "policy_p9_chunk_02"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 2,
-            "section": "UNKNOWN",
-            "chunk_id": "policy_p2_chunk_03"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 1,
-            "section": "DEFINITIONS",
-            "chunk_id": "policy_p1_chunk_02"
+            "chunk_id": "policy_p9_chunk_01"
           }
         ],
         "trace": [
@@ -1737,17 +1756,17 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused 27 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 35070.21000000001
+            "elapsed_ms": 22398.495
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
-            "elapsed_ms": null
+            "elapsed_ms": 0.039000005926936865
           },
           {
             "agent": "DecisionAgent",
@@ -1768,132 +1787,14 @@
         "case_id": "CUS-003",
         "case_type": "Custom",
         "expected": "NOT_ADMISSIBLE",
-        "actual": "NOT_ADMISSIBLE",
-        "correct": true,
-        "confidence": 0.9,
-        "payable_amount": 0.0,
-        "key_findings": [
-          "Claim occurs after the general 30-day waiting period.",
-          "Hospitalization meets the 24-hour minimum duration requirement.",
-          "Pre-existing disease remains within the applicable waiting period."
-        ],
-        "applicable_limits": [
-          "Room rent: 1% of Basic Sum Insured per day.",
-          "ICU: 2% of Basic Sum Insured per day.",
-          "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
-          "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-          "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
-        ],
-        "missing_evidence": [],
-        "deductions": [],
-        "citation_count": 8,
-        "citations": [
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_02"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_03"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 5,
-            "section": "benefits",
-            "chunk_id": "policy_p5_chunk_01"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 3,
-            "section": "benefits",
-            "chunk_id": "policy_p3_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_01"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 7,
-            "section": "WHAT WE COVER",
-            "chunk_id": "policy_p7_chunk_02"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 5,
-            "section": "benefits",
-            "chunk_id": "policy_p5_chunk_03"
-          }
-        ],
-        "trace": [
-          {
-            "agent": "CaseAnalysisAgent",
-            "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
-            "retrieval_count": 0,
-            "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 0.0
-          },
-          {
-            "agent": "PolicyEvidenceAgent",
-            "action": "Generated 4 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
-            "retrieval_count": 10,
-            "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 46218.277
-          },
-          {
-            "agent": "CoverageAgent",
-            "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
-            "retrieval_count": 10,
-            "validation_status": null,
-            "elapsed_ms": null
-          },
-          {
-            "agent": "DecisionAgent",
-            "action": "Generated NOT_ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
-            "retrieval_count": 10,
-            "validation_status": null,
-            "elapsed_ms": null
-          }
-        ],
-        "validation": {
-          "status": "VALID",
-          "unsupported_claims": []
-        },
-        "missing_evidence_count": 0,
-        "deduction_count": 0
-      },
-      {
-        "case_id": "CUS-004",
-        "case_type": "Custom",
-        "expected": "NEEDS_REVIEW",
         "actual": "NEEDS_REVIEW",
-        "correct": true,
+        "correct": false,
         "confidence": 0.4,
         "payable_amount": null,
         "key_findings": [
           "Claim occurs after the general 30-day waiting period.",
           "Hospitalization meets the 24-hour minimum duration requirement.",
-          "No applicable policy sub-limit deduction was identified from the supplied claim facts."
+          "Pre-existing disease remains within the applicable waiting period."
         ],
         "applicable_limits": [
           "Room rent: 1% of Basic Sum Insured per day.",
@@ -1911,13 +1812,6 @@
         "citation_count": 8,
         "citations": [
           {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_02"
-          },
-          {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 7,
@@ -1927,9 +1821,16 @@
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 10,
+            "section": "What We cover",
+            "chunk_id": "policy_p10_chunk_03"
           },
           {
             "claim": "Claim occurs after the general 30-day waiting period.",
@@ -1939,20 +1840,6 @@
             "chunk_id": "policy_p5_chunk_02"
           },
           {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 5,
-            "section": "benefits",
-            "chunk_id": "policy_p5_chunk_03"
-          },
-          {
-            "claim": "Claim occurs after the general 30-day waiting period.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 9,
-            "section": "Waiting Period",
-            "chunk_id": "policy_p9_chunk_02"
-          },
-          {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 7,
@@ -1960,11 +1847,25 @@
             "chunk_id": "policy_p7_chunk_02"
           },
           {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_01"
+          },
+          {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 2,
-            "section": "UNKNOWN",
-            "chunk_id": "policy_p2_chunk_03"
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_04"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_01"
           }
         ],
         "trace": [
@@ -1977,17 +1878,138 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 4 policy queries, combined dense and sparse retrieval, fused 32 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 35262.142
+            "elapsed_ms": 28659.905
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
+            "elapsed_ms": 0.035699980799108744
+          },
+          {
+            "agent": "DecisionAgent",
+            "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+            "retrieval_count": 10,
+            "validation_status": null,
             "elapsed_ms": null
+          }
+        ],
+        "validation": {
+          "status": "VALID_ABSTENTION",
+          "unsupported_claims": []
+        },
+        "missing_evidence_count": 3,
+        "deduction_count": 0
+      },
+      {
+        "case_id": "CUS-004",
+        "case_type": "Custom",
+        "expected": "NEEDS_REVIEW",
+        "actual": "NEEDS_REVIEW",
+        "correct": true,
+        "confidence": 0.4,
+        "payable_amount": null,
+        "key_findings": [
+          "Claim occurs after the general 30-day waiting period.",
+          "Hospitalization meets the 24-hour minimum duration requirement."
+        ],
+        "applicable_limits": [
+          "Room rent: 1% of Basic Sum Insured per day.",
+          "ICU: 2% of Basic Sum Insured per day.",
+          "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
+          "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
+          "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
+        ],
+        "missing_evidence": [
+          "Hospital registration status is not documented.",
+          "Hospital minimum eligibility criteria are not documented.",
+          "Medical necessity is not documented."
+        ],
+        "deductions": [],
+        "citation_count": 8,
+        "citations": [
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 7,
+            "section": "WHAT WE COVER",
+            "chunk_id": "policy_p7_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_02"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "policy_p8_chunk_03"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 10,
+            "section": "What We cover",
+            "chunk_id": "policy_p10_chunk_03"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_03"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 7,
+            "section": "WHAT WE COVER",
+            "chunk_id": "policy_p7_chunk_02"
+          },
+          {
+            "claim": "Claim occurs after the general 30-day waiting period.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 9,
+            "section": "Waiting Period",
+            "chunk_id": "policy_p9_chunk_04"
+          }
+        ],
+        "trace": [
+          {
+            "agent": "CaseAnalysisAgent",
+            "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
+            "retrieval_count": 0,
+            "validation_status": "NOT_VALIDATED",
+            "elapsed_ms": 0.0
+          },
+          {
+            "agent": "PolicyEvidenceAgent",
+            "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused 27 unique candidates, and performed one reranking pass.",
+            "retrieval_count": 10,
+            "validation_status": "NOT_VALIDATED",
+            "elapsed_ms": 22459.616
+          },
+          {
+            "agent": "CoverageAgent",
+            "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
+            "retrieval_count": 10,
+            "validation_status": null,
+            "elapsed_ms": 0.035900011425837874
           },
           {
             "agent": "DecisionAgent",
@@ -2043,6 +2065,13 @@
             "chunk_id": "policy_p7_chunk_03"
           },
           {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 10,
+            "section": "What We cover",
+            "chunk_id": "policy_p10_chunk_03"
+          },
+          {
             "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 5,
@@ -2050,18 +2079,25 @@
             "chunk_id": "policy_p5_chunk_03"
           },
           {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 8,
-            "section": "WHAT WE EXCLUDE",
-            "chunk_id": "policy_p8_chunk_03"
+            "page": 5,
+            "section": "benefits",
+            "chunk_id": "policy_p5_chunk_02"
           },
           {
             "claim": "Claim occurs after the general 30-day waiting period.",
             "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
             "page": 9,
             "section": "Waiting Period",
-            "chunk_id": "policy_p9_chunk_02"
+            "chunk_id": "policy_p9_chunk_01"
+          },
+          {
+            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+            "page": 6,
+            "section": "Exclusions",
+            "chunk_id": "policy_p6_chunk_01"
           },
           {
             "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -2069,20 +2105,6 @@
             "page": 7,
             "section": "WHAT WE COVER",
             "chunk_id": "policy_p7_chunk_02"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 2,
-            "section": "UNKNOWN",
-            "chunk_id": "policy_p2_chunk_03"
-          },
-          {
-            "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-            "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-            "page": 3,
-            "section": "benefits",
-            "chunk_id": "policy_p3_chunk_02"
           }
         ],
         "trace": [
@@ -2095,17 +2117,17 @@
           },
           {
             "agent": "PolicyEvidenceAgent",
-            "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+            "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused 30 unique candidates, and performed one reranking pass.",
             "retrieval_count": 10,
             "validation_status": "NOT_VALIDATED",
-            "elapsed_ms": 35414.112
+            "elapsed_ms": 25574.736999999997
           },
           {
             "agent": "CoverageAgent",
             "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
             "retrieval_count": 10,
             "validation_status": null,
-            "elapsed_ms": null
+            "elapsed_ms": 0.028499984182417393
           },
           {
             "agent": "DecisionAgent",
@@ -2126,9 +2148,9 @@
   },
   "overall": {
     "total": 17,
-    "correct": 17,
-    "accuracy": 1.0,
-    "abstentions": 3,
+    "correct": 9,
+    "accuracy": 0.5294,
+    "abstentions": 11,
     "total_citations": 136,
     "cases_with_citations": 17
   },
@@ -2137,10 +2159,10 @@
       "case_id": "PUB-001",
       "case_type": "Public",
       "expected": "ADMISSIBLE_WITH_LIMITS",
-      "actual": "ADMISSIBLE_WITH_LIMITS",
-      "correct": true,
-      "confidence": 0.85,
-      "payable_amount": 153000.0,
+      "actual": "NEEDS_REVIEW",
+      "correct": false,
+      "confidence": 0.4,
+      "payable_amount": null,
       "key_findings": [
         "Claim occurs after the general 30-day waiting period.",
         "Hospitalization meets the 24-hour minimum duration requirement."
@@ -2152,7 +2174,11 @@
         "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
         "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
       ],
-      "missing_evidence": [],
+      "missing_evidence": [
+        "Hospital registration status is not documented.",
+        "Hospital minimum eligibility criteria are not documented.",
+        "Medical necessity is not documented."
+      ],
       "deductions": [
         {
           "category": "room",
@@ -2195,23 +2221,23 @@
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 5,
           "section": "benefits",
           "chunk_id": "policy_p5_chunk_01"
         },
         {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_02"
         },
         {
           "claim": "Claim occurs after the general 30-day waiting period.",
@@ -2223,9 +2249,9 @@
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 2,
-          "section": "UNKNOWN",
-          "chunk_id": "policy_p2_chunk_03"
+          "page": 4,
+          "section": "benefits",
+          "chunk_id": "policy_p4_chunk_04"
         }
       ],
       "trace": [
@@ -2238,44 +2264,44 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 39 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 79117.218
+          "elapsed_ms": 40474.231
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
-          "elapsed_ms": null
+          "elapsed_ms": 1.2271000014152378
         },
         {
           "agent": "DecisionAgent",
-          "action": "Generated ADMISSIBLE_WITH_LIMITS from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+          "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
           "retrieval_count": 10,
           "validation_status": null,
           "elapsed_ms": null
         }
       ],
       "validation": {
-        "status": "VALID",
+        "status": "VALID_ABSTENTION",
         "unsupported_claims": []
       },
-      "missing_evidence_count": 0,
+      "missing_evidence_count": 3,
       "deduction_count": 2
     },
     {
       "case_id": "PUB-002",
       "case_type": "Public",
       "expected": "NOT_ADMISSIBLE",
-      "actual": "NOT_ADMISSIBLE",
-      "correct": true,
-      "confidence": 0.9,
-      "payable_amount": 0.0,
+      "actual": "NEEDS_REVIEW",
+      "correct": false,
+      "confidence": 0.4,
+      "payable_amount": null,
       "key_findings": [
         "Hospitalization meets the 24-hour minimum duration requirement.",
-        "Claim falls within the general 30-day waiting period."
+        "General 30-day waiting period has not been completed."
       ],
       "applicable_limits": [
         "Room rent: 1% of Basic Sum Insured per day.",
@@ -2284,7 +2310,11 @@
         "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
         "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
       ],
-      "missing_evidence": [],
+      "missing_evidence": [
+        "Hospital registration status is not documented.",
+        "Hospital minimum eligibility criteria are not documented.",
+        "Medical necessity is not documented."
+      ],
       "deductions": [],
       "citation_count": 8,
       "citations": [
@@ -2294,13 +2324,6 @@
           "page": 8,
           "section": "WHAT WE EXCLUDE",
           "chunk_id": "policy_p8_chunk_02"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
         },
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -2319,16 +2342,9 @@
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 5,
-          "section": "benefits",
-          "chunk_id": "policy_p5_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_03"
         },
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -2340,9 +2356,23 @@
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 2,
-          "section": "UNKNOWN",
-          "chunk_id": "policy_p2_chunk_03"
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_02"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 4,
+          "section": "benefits",
+          "chunk_id": "policy_p4_chunk_04"
         }
       ],
       "trace": [
@@ -2355,45 +2385,45 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 37 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 69454.784
+          "elapsed_ms": 36918.86
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
-          "elapsed_ms": null
+          "elapsed_ms": 0.03090000245720148
         },
         {
           "agent": "DecisionAgent",
-          "action": "Generated NOT_ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+          "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
           "retrieval_count": 10,
           "validation_status": null,
           "elapsed_ms": null
         }
       ],
       "validation": {
-        "status": "VALID",
+        "status": "VALID_ABSTENTION",
         "unsupported_claims": []
       },
-      "missing_evidence_count": 0,
+      "missing_evidence_count": 3,
       "deduction_count": 0
     },
     {
       "case_id": "PUB-003",
       "case_type": "Public",
       "expected": "NOT_ADMISSIBLE",
-      "actual": "NOT_ADMISSIBLE",
-      "correct": true,
-      "confidence": 0.9,
-      "payable_amount": 0.0,
+      "actual": "NEEDS_REVIEW",
+      "correct": false,
+      "confidence": 0.4,
+      "payable_amount": null,
       "key_findings": [
         "Claim occurs after the general 30-day waiting period.",
-        "Hospitalization meets the 24-hour minimum duration requirement.",
-        "Pre-existing disease remains within the applicable waiting period."
+        "Pre-existing disease waiting period has been satisfied.",
+        "Hospitalization meets the 24-hour minimum duration requirement."
       ],
       "applicable_limits": [
         "Room rent: 1% of Basic Sum Insured per day.",
@@ -2402,7 +2432,11 @@
         "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
         "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
       ],
-      "missing_evidence": [],
+      "missing_evidence": [
+        "Hospital registration status is not documented.",
+        "Hospital minimum eligibility criteria are not documented.",
+        "Medical necessity is not documented."
+      ],
       "deductions": [],
       "citation_count": 8,
       "citations": [
@@ -2423,23 +2457,16 @@
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 5,
           "section": "benefits",
           "chunk_id": "policy_p5_chunk_01"
         },
         {
-          "claim": "Claim occurs after the general 30-day waiting period.",
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 3,
-          "section": "benefits",
-          "chunk_id": "policy_p3_chunk_01"
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_03"
         },
         {
           "claim": "Claim occurs after the general 30-day waiting period.",
@@ -2456,11 +2483,18 @@
           "chunk_id": "policy_p7_chunk_02"
         },
         {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_02"
+        },
+        {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 2,
-          "section": "UNKNOWN",
-          "chunk_id": "policy_p2_chunk_03"
+          "page": 4,
+          "section": "benefits",
+          "chunk_id": "policy_p4_chunk_04"
         }
       ],
       "trace": [
@@ -2473,31 +2507,31 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 37 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 68481.046
+          "elapsed_ms": 36779.803
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
-          "elapsed_ms": null
+          "elapsed_ms": 0.039000005926936865
         },
         {
           "agent": "DecisionAgent",
-          "action": "Generated NOT_ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+          "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
           "retrieval_count": 10,
           "validation_status": null,
           "elapsed_ms": null
         }
       ],
       "validation": {
-        "status": "VALID",
+        "status": "VALID_ABSTENTION",
         "unsupported_claims": []
       },
-      "missing_evidence_count": 0,
+      "missing_evidence_count": 3,
       "deduction_count": 0
     },
     {
@@ -2516,7 +2550,6 @@
         "ICU: 2% of Basic Sum Insured per day.",
         "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
         "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-        "Domiciliary treatment: 20% of Basic Sum Insured.",
         "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
       ],
       "missing_evidence": [],
@@ -2526,7 +2559,7 @@
           "claimed": 105000.0,
           "allowed": 100000.0,
           "deduction": 5000.0,
-          "reason": "Domiciliary treatment expenses exceed the applicable 20% Basic Sum Insured aggregate sub-limit."
+          "reason": "Domiciliary treatment exceeds the applicable 20% Basic Sum Insured limit."
         }
       ],
       "citation_count": 8,
@@ -2553,11 +2586,11 @@
           "chunk_id": "policy_p5_chunk_01"
         },
         {
-          "claim": "Room rent: 1% of Basic Sum Insured per day.",
+          "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 8,
           "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
+          "chunk_id": "policy_p8_chunk_01"
         },
         {
           "claim": "Room rent: 1% of Basic Sum Insured per day.",
@@ -2567,25 +2600,25 @@
           "chunk_id": "policy_p7_chunk_02"
         },
         {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 3,
-          "section": "benefits",
-          "chunk_id": "policy_p3_chunk_01"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_01"
-        },
-        {
           "claim": "on, etc. 17. Any expense under Domiciliary Hospitalisation for 18. Pre and Post Hospitalisation treatment 19. Any treatment not exceeding three days. 20. Treatment of following...",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 10,
           "section": "What We cover",
           "chunk_id": "policy_p10_chunk_02"
+        },
+        {
+          "claim": "s are carried out;  maintains daily records of patients and will make these accessible to the insurance company‟s authorized personnel Day Care Treatment Day care treatment ref...",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 2,
+          "section": "UNKNOWN",
+          "chunk_id": "policy_p2_chunk_03"
+        },
+        {
+          "claim": "Room rent: 1% of Basic Sum Insured per day.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 1,
+          "section": "DEFINITIONS",
+          "chunk_id": "policy_p1_chunk_02"
         }
       ],
       "trace": [
@@ -2598,17 +2631,17 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 168665.255
+          "elapsed_ms": 36719.904
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
-          "elapsed_ms": null
+          "elapsed_ms": 23.786900012055412
         },
         {
           "agent": "DecisionAgent",
@@ -2634,8 +2667,7 @@
       "confidence": 0.8,
       "payable_amount": 65000.0,
       "key_findings": [
-        "Claim occurs after the general 30-day waiting period.",
-        "No applicable policy sub-limit deduction was identified from the supplied claim facts."
+        "Claim occurs after the general 30-day waiting period."
       ],
       "applicable_limits": [
         "Room rent: 1% of Basic Sum Insured per day.",
@@ -2656,11 +2688,11 @@
           "chunk_id": "policy_p8_chunk_02"
         },
         {
-          "claim": "Room rent: 1% of Basic Sum Insured per day.",
+          "claim": "UNIVERSAL SOMPO GENERAL INSURANCE CO LTD 5 CSC- Individual Health Insurance-Policy Wording UNIHLIP18004V011718 IRDAI Reg No:134  The In -patient Hospitalization claim for such...",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_01"
         },
         {
           "claim": "Room rent: 1% of Basic Sum Insured per day.",
@@ -2670,11 +2702,25 @@
           "chunk_id": "policy_p7_chunk_03"
         },
         {
-          "claim": "UNIVERSAL SOMPO GENERAL INSURANCE CO LTD 5 CSC- Individual Health Insurance-Policy Wording UNIHLIP18004V011718 IRDAI Reg No:134  The In -patient Hospitalization claim for such...",
+          "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 5,
           "section": "benefits",
-          "chunk_id": "policy_p5_chunk_01"
+          "chunk_id": "policy_p5_chunk_03"
+        },
+        {
+          "claim": "Room rent: 1% of Basic Sum Insured per day.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_02"
         },
         {
           "claim": "Claim occurs after the general 30-day waiting period.",
@@ -2688,21 +2734,7 @@
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 9,
           "section": "Waiting Period",
-          "chunk_id": "policy_p9_chunk_02"
-        },
-        {
-          "claim": "Room rent: 1% of Basic Sum Insured per day.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
-        },
-        {
-          "claim": "on, etc. 17. Any expense under Domiciliary Hospitalisation for 18. Pre and Post Hospitalisation treatment 19. Any treatment not exceeding three days. 20. Treatment of following...",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 10,
-          "section": "What We cover",
-          "chunk_id": "policy_p10_chunk_02"
+          "chunk_id": "policy_p9_chunk_01"
         }
       ],
       "trace": [
@@ -2715,17 +2747,17 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 69817.461
+          "elapsed_ms": 37290.111000000004
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
-          "elapsed_ms": null
+          "elapsed_ms": 0.034199998481199145
         },
         {
           "agent": "DecisionAgent",
@@ -2792,20 +2824,6 @@
           "chunk_id": "policy_p7_chunk_03"
         },
         {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 3,
-          "section": "benefits",
-          "chunk_id": "policy_p3_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
-        },
-        {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 5,
@@ -2815,9 +2833,23 @@
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_02"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_01"
         },
         {
           "claim": "Claim occurs after the general 30-day waiting period.",
@@ -2829,9 +2861,9 @@
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 2,
-          "section": "UNKNOWN",
-          "chunk_id": "policy_p2_chunk_03"
+          "page": 10,
+          "section": "What We cover",
+          "chunk_id": "policy_p10_chunk_02"
         }
       ],
       "trace": [
@@ -2844,17 +2876,17 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 68061.924
+          "elapsed_ms": 36634.744
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
-          "elapsed_ms": null
+          "elapsed_ms": 0.05050000618211925
         },
         {
           "agent": "DecisionAgent",
@@ -2875,10 +2907,10 @@
       "case_id": "PUB-007",
       "case_type": "Public",
       "expected": "ADMISSIBLE_WITH_LIMITS",
-      "actual": "ADMISSIBLE_WITH_LIMITS",
-      "correct": true,
-      "confidence": 0.85,
-      "payable_amount": 716000.0,
+      "actual": "NEEDS_REVIEW",
+      "correct": false,
+      "confidence": 0.4,
+      "payable_amount": null,
       "key_findings": [
         "Claim occurs after the general 30-day waiting period.",
         "Hospitalization meets the 24-hour minimum duration requirement."
@@ -2890,7 +2922,11 @@
         "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
         "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
       ],
-      "missing_evidence": [],
+      "missing_evidence": [
+        "Hospital registration status is not documented.",
+        "Hospital minimum eligibility criteria are not documented.",
+        "Medical necessity is not documented."
+      ],
       "deductions": [
         {
           "category": "room",
@@ -2938,20 +2974,6 @@
           "chunk_id": "policy_p7_chunk_03"
         },
         {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 3,
-          "section": "benefits",
-          "chunk_id": "policy_p3_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
-        },
-        {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 5,
@@ -2961,127 +2983,23 @@
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 2,
-          "section": "UNKNOWN",
-          "chunk_id": "policy_p2_chunk_03"
-        }
-      ],
-      "trace": [
-        {
-          "agent": "CaseAnalysisAgent",
-          "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
-          "retrieval_count": 0,
-          "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 0.0
-        },
-        {
-          "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
-          "retrieval_count": 10,
-          "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 68482.878
-        },
-        {
-          "agent": "CoverageAgent",
-          "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
-          "retrieval_count": 10,
-          "validation_status": null,
-          "elapsed_ms": null
-        },
-        {
-          "agent": "DecisionAgent",
-          "action": "Generated ADMISSIBLE_WITH_LIMITS from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
-          "retrieval_count": 10,
-          "validation_status": null,
-          "elapsed_ms": null
-        }
-      ],
-      "validation": {
-        "status": "VALID",
-        "unsupported_claims": []
-      },
-      "missing_evidence_count": 0,
-      "deduction_count": 4
-    },
-    {
-      "case_id": "PUB-008",
-      "case_type": "Public",
-      "expected": "NOT_ADMISSIBLE",
-      "actual": "NOT_ADMISSIBLE",
-      "correct": true,
-      "confidence": 0.9,
-      "payable_amount": 0.0,
-      "key_findings": [
-        "Claim occurs after the general 30-day waiting period.",
-        "Hospitalization meets the 24-hour minimum duration requirement.",
-        "Cosmetic or aesthetic treatment is excluded unless it qualifies under the policy exception for plastic surgery relating to Injury or Disease."
-      ],
-      "applicable_limits": [
-        "Room rent: 1% of Basic Sum Insured per day.",
-        "ICU: 2% of Basic Sum Insured per day.",
-        "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
-        "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-        "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
-      ],
-      "missing_evidence": [],
-      "deductions": [],
-      "citation_count": 8,
-      "citations": [
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_02"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_03"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 5,
-          "section": "benefits",
-          "chunk_id": "policy_p5_chunk_01"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 3,
-          "section": "benefits",
-          "chunk_id": "policy_p3_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 8,
           "section": "WHAT WE EXCLUDE",
           "chunk_id": "policy_p8_chunk_03"
         },
         {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_02"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_01"
         },
         {
           "claim": "Claim occurs after the general 30-day waiting period.",
@@ -3089,126 +3007,6 @@
           "page": 8,
           "section": "WHAT WE EXCLUDE",
           "chunk_id": "policy_p8_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 10,
-          "section": "What We cover",
-          "chunk_id": "policy_p10_chunk_02"
-        }
-      ],
-      "trace": [
-        {
-          "agent": "CaseAnalysisAgent",
-          "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
-          "retrieval_count": 0,
-          "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 0.0
-        },
-        {
-          "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
-          "retrieval_count": 10,
-          "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 69055.992
-        },
-        {
-          "agent": "CoverageAgent",
-          "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
-          "retrieval_count": 10,
-          "validation_status": null,
-          "elapsed_ms": null
-        },
-        {
-          "agent": "DecisionAgent",
-          "action": "Generated NOT_ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
-          "retrieval_count": 10,
-          "validation_status": null,
-          "elapsed_ms": null
-        }
-      ],
-      "validation": {
-        "status": "VALID",
-        "unsupported_claims": []
-      },
-      "missing_evidence_count": 0,
-      "deduction_count": 0
-    },
-    {
-      "case_id": "PUB-009",
-      "case_type": "Public",
-      "expected": "ADMISSIBLE",
-      "actual": "ADMISSIBLE",
-      "correct": true,
-      "confidence": 0.8,
-      "payable_amount": 186800.0,
-      "key_findings": [
-        "Claim occurs after the general 30-day waiting period.",
-        "Hospitalization meets the 24-hour minimum duration requirement.",
-        "Pre-hospitalization expense falls within the permitted 30-day window.",
-        "Post-hospitalization expense falls within the permitted 60-day window and is confirmed for the same condition.",
-        "No applicable policy sub-limit deduction was identified from the supplied claim facts."
-      ],
-      "applicable_limits": [
-        "Room rent: 1% of Basic Sum Insured per day.",
-        "ICU: 2% of Basic Sum Insured per day.",
-        "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
-        "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-        "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
-      ],
-      "missing_evidence": [],
-      "deductions": [],
-      "citation_count": 8,
-      "citations": [
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 5,
-          "section": "benefits",
-          "chunk_id": "policy_p5_chunk_01"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_02"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_03"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 3,
-          "section": "benefits",
-          "chunk_id": "policy_p3_chunk_01"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
         },
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -3228,31 +3026,274 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 69176.338
+          "elapsed_ms": 38940.356999999996
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
-          "elapsed_ms": null
+          "elapsed_ms": 0.04199999966658652
         },
         {
           "agent": "DecisionAgent",
-          "action": "Generated ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+          "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
           "retrieval_count": 10,
           "validation_status": null,
           "elapsed_ms": null
         }
       ],
       "validation": {
-        "status": "VALID",
+        "status": "VALID_ABSTENTION",
         "unsupported_claims": []
       },
-      "missing_evidence_count": 0,
+      "missing_evidence_count": 3,
+      "deduction_count": 4
+    },
+    {
+      "case_id": "PUB-008",
+      "case_type": "Public",
+      "expected": "NOT_ADMISSIBLE",
+      "actual": "NEEDS_REVIEW",
+      "correct": false,
+      "confidence": 0.4,
+      "payable_amount": null,
+      "key_findings": [
+        "Claim occurs after the general 30-day waiting period.",
+        "Hospitalization meets the 24-hour minimum duration requirement.",
+        "Cosmetic or aesthetic treatment is excluded unless covered under the applicable injury/disease exception."
+      ],
+      "applicable_limits": [
+        "Room rent: 1% of Basic Sum Insured per day.",
+        "ICU: 2% of Basic Sum Insured per day.",
+        "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
+        "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
+        "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
+      ],
+      "missing_evidence": [
+        "Hospital registration status is not documented.",
+        "Hospital minimum eligibility criteria are not documented.",
+        "Medical necessity is not documented."
+      ],
+      "deductions": [],
+      "citation_count": 8,
+      "citations": [
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_02"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 7,
+          "section": "WHAT WE COVER",
+          "chunk_id": "policy_p7_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_02"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 3,
+          "section": "benefits",
+          "chunk_id": "policy_p3_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 10,
+          "section": "What We cover",
+          "chunk_id": "policy_p10_chunk_02"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "CaseAnalysisAgent",
+          "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
+          "retrieval_count": 0,
+          "validation_status": "NOT_VALIDATED",
+          "elapsed_ms": 0.0
+        },
+        {
+          "agent": "PolicyEvidenceAgent",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
+          "retrieval_count": 10,
+          "validation_status": "NOT_VALIDATED",
+          "elapsed_ms": 37545.759
+        },
+        {
+          "agent": "CoverageAgent",
+          "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
+          "retrieval_count": 10,
+          "validation_status": null,
+          "elapsed_ms": 0.047200010158121586
+        },
+        {
+          "agent": "DecisionAgent",
+          "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+          "retrieval_count": 10,
+          "validation_status": null,
+          "elapsed_ms": null
+        }
+      ],
+      "validation": {
+        "status": "VALID_ABSTENTION",
+        "unsupported_claims": []
+      },
+      "missing_evidence_count": 3,
+      "deduction_count": 0
+    },
+    {
+      "case_id": "PUB-009",
+      "case_type": "Public",
+      "expected": "ADMISSIBLE",
+      "actual": "NEEDS_REVIEW",
+      "correct": false,
+      "confidence": 0.4,
+      "payable_amount": null,
+      "key_findings": [
+        "Claim occurs after the general 30-day waiting period.",
+        "Hospitalization meets the 24-hour minimum duration requirement."
+      ],
+      "applicable_limits": [
+        "Room rent: 1% of Basic Sum Insured per day.",
+        "ICU: 2% of Basic Sum Insured per day.",
+        "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
+        "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
+        "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
+      ],
+      "missing_evidence": [
+        "Hospital registration status is not documented.",
+        "Hospital minimum eligibility criteria are not documented.",
+        "Medical necessity is not documented."
+      ],
+      "deductions": [],
+      "citation_count": 8,
+      "citations": [
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_02"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 7,
+          "section": "WHAT WE COVER",
+          "chunk_id": "policy_p7_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 3,
+          "section": "benefits",
+          "chunk_id": "policy_p3_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_01"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_02"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 4,
+          "section": "benefits",
+          "chunk_id": "policy_p4_chunk_04"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "CaseAnalysisAgent",
+          "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
+          "retrieval_count": 0,
+          "validation_status": "NOT_VALIDATED",
+          "elapsed_ms": 0.0
+        },
+        {
+          "agent": "PolicyEvidenceAgent",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 39 unique candidates, and performed one reranking pass.",
+          "retrieval_count": 10,
+          "validation_status": "NOT_VALIDATED",
+          "elapsed_ms": 38042.019
+        },
+        {
+          "agent": "CoverageAgent",
+          "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
+          "retrieval_count": 10,
+          "validation_status": null,
+          "elapsed_ms": 0.0315000070258975
+        },
+        {
+          "agent": "DecisionAgent",
+          "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+          "retrieval_count": 10,
+          "validation_status": null,
+          "elapsed_ms": null
+        }
+      ],
+      "validation": {
+        "status": "VALID_ABSTENTION",
+        "unsupported_claims": []
+      },
+      "missing_evidence_count": 3,
       "deduction_count": 0
     },
     {
@@ -3264,8 +3305,7 @@
       "confidence": 0.8,
       "payable_amount": 80000.0,
       "key_findings": [
-        "Claim occurs after the general 30-day waiting period.",
-        "No applicable policy sub-limit deduction was identified from the supplied claim facts."
+        "Claim occurs after the general 30-day waiting period."
       ],
       "applicable_limits": [
         "Room rent: 1% of Basic Sum Insured per day.",
@@ -3286,11 +3326,11 @@
           "chunk_id": "policy_p8_chunk_02"
         },
         {
-          "claim": "Room rent: 1% of Basic Sum Insured per day.",
+          "claim": "UNIVERSAL SOMPO GENERAL INSURANCE CO LTD 5 CSC- Individual Health Insurance-Policy Wording UNIHLIP18004V011718 IRDAI Reg No:134  The In -patient Hospitalization claim for such...",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_01"
         },
         {
           "claim": "Room rent: 1% of Basic Sum Insured per day.",
@@ -3300,11 +3340,25 @@
           "chunk_id": "policy_p7_chunk_03"
         },
         {
-          "claim": "UNIVERSAL SOMPO GENERAL INSURANCE CO LTD 5 CSC- Individual Health Insurance-Policy Wording UNIHLIP18004V011718 IRDAI Reg No:134  The In -patient Hospitalization claim for such...",
+          "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 5,
           "section": "benefits",
-          "chunk_id": "policy_p5_chunk_01"
+          "chunk_id": "policy_p5_chunk_03"
+        },
+        {
+          "claim": "Room rent: 1% of Basic Sum Insured per day.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_02"
         },
         {
           "claim": "Claim occurs after the general 30-day waiting period.",
@@ -3318,21 +3372,7 @@
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 9,
           "section": "Waiting Period",
-          "chunk_id": "policy_p9_chunk_02"
-        },
-        {
-          "claim": "Room rent: 1% of Basic Sum Insured per day.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
-        },
-        {
-          "claim": "on, etc. 17. Any expense under Domiciliary Hospitalisation for 18. Pre and Post Hospitalisation treatment 19. Any treatment not exceeding three days. 20. Treatment of following...",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 10,
-          "section": "What We cover",
-          "chunk_id": "policy_p10_chunk_02"
+          "chunk_id": "policy_p9_chunk_01"
         }
       ],
       "trace": [
@@ -3345,17 +3385,17 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 38 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 68940.511
+          "elapsed_ms": 37592.001000000004
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
-          "elapsed_ms": null
+          "elapsed_ms": 0.04230000195093453
         },
         {
           "agent": "DecisionAgent",
@@ -3383,7 +3423,7 @@
       "key_findings": [
         "Claim occurs after the general 30-day waiting period.",
         "Hospitalization meets the 24-hour minimum duration requirement.",
-        "No applicable policy sub-limit deduction was identified from the supplied claim facts."
+        "Hospital minimum eligibility criteria are not satisfied."
       ],
       "applicable_limits": [
         "Room rent: 1% of Basic Sum Insured per day.",
@@ -3407,27 +3447,6 @@
           "chunk_id": "policy_p8_chunk_02"
         },
         {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_03"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 5,
-          "section": "benefits",
-          "chunk_id": "policy_p5_chunk_01"
-        },
-        {
           "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 3,
@@ -3435,228 +3454,11 @@
           "chunk_id": "policy_p3_chunk_01"
         },
         {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 4,
-          "section": "benefits",
-          "chunk_id": "policy_p4_chunk_04"
-        }
-      ],
-      "trace": [
-        {
-          "agent": "CaseAnalysisAgent",
-          "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
-          "retrieval_count": 0,
-          "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 0.0
-        },
-        {
-          "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
-          "retrieval_count": 10,
-          "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 68577.698
-        },
-        {
-          "agent": "CoverageAgent",
-          "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
-          "retrieval_count": 10,
-          "validation_status": null,
-          "elapsed_ms": null
-        },
-        {
-          "agent": "DecisionAgent",
-          "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
-          "retrieval_count": 10,
-          "validation_status": null,
-          "elapsed_ms": null
-        }
-      ],
-      "validation": {
-        "status": "VALID_ABSTENTION",
-        "unsupported_claims": []
-      },
-      "missing_evidence_count": 2,
-      "deduction_count": 0
-    },
-    {
-      "case_id": "PUB-012",
-      "case_type": "Public",
-      "expected": "NOT_ADMISSIBLE",
-      "actual": "NOT_ADMISSIBLE",
-      "correct": true,
-      "confidence": 0.9,
-      "payable_amount": 0.0,
-      "key_findings": [
-        "Claim occurs after the general 30-day waiting period.",
-        "Hospitalization meets the 24-hour minimum duration requirement.",
-        "Unproven or experimental treatment is excluded under the policy."
-      ],
-      "applicable_limits": [
-        "Room rent: 1% of Basic Sum Insured per day.",
-        "ICU: 2% of Basic Sum Insured per day.",
-        "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
-        "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-        "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
-      ],
-      "missing_evidence": [],
-      "deductions": [],
-      "citation_count": 8,
-      "citations": [
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_02"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_03"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
-        },
-        {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 5,
           "section": "benefits",
           "chunk_id": "policy_p5_chunk_01"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 3,
-          "section": "benefits",
-          "chunk_id": "policy_p3_chunk_01"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 2,
-          "section": "UNKNOWN",
-          "chunk_id": "policy_p2_chunk_03"
-        }
-      ],
-      "trace": [
-        {
-          "agent": "CaseAnalysisAgent",
-          "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
-          "retrieval_count": 0,
-          "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 0.0
-        },
-        {
-          "agent": "PolicyEvidenceAgent",
-          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
-          "retrieval_count": 10,
-          "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 68730.456
-        },
-        {
-          "agent": "CoverageAgent",
-          "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
-          "retrieval_count": 10,
-          "validation_status": null,
-          "elapsed_ms": null
-        },
-        {
-          "agent": "DecisionAgent",
-          "action": "Generated NOT_ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
-          "retrieval_count": 10,
-          "validation_status": null,
-          "elapsed_ms": null
-        }
-      ],
-      "validation": {
-        "status": "VALID",
-        "unsupported_claims": []
-      },
-      "missing_evidence_count": 0,
-      "deduction_count": 0
-    },
-    {
-      "case_id": "CUS-001",
-      "case_type": "Custom",
-      "expected": "ADMISSIBLE",
-      "actual": "ADMISSIBLE",
-      "correct": true,
-      "confidence": 0.8,
-      "payable_amount": 144800.0,
-      "key_findings": [
-        "Claim occurs after the general 30-day waiting period.",
-        "Hospitalization meets the 24-hour minimum duration requirement.",
-        "Pre-hospitalization expense falls within the permitted 30-day window.",
-        "Post-hospitalization expense falls within the permitted 60-day window and is confirmed for the same condition.",
-        "No applicable policy sub-limit deduction was identified from the supplied claim facts."
-      ],
-      "applicable_limits": [
-        "Room rent: 1% of Basic Sum Insured per day.",
-        "ICU: 2% of Basic Sum Insured per day.",
-        "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
-        "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-        "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
-      ],
-      "missing_evidence": [],
-      "deductions": [],
-      "citation_count": 8,
-      "citations": [
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 5,
-          "section": "benefits",
-          "chunk_id": "policy_p5_chunk_01"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_02"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
         },
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -3680,11 +3482,11 @@
           "chunk_id": "policy_p9_chunk_02"
         },
         {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_01"
         },
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -3704,17 +3506,256 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 4 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 39 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 47169.452999999994
+          "elapsed_ms": 38275.990999999995
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
+          "elapsed_ms": 0.033899996196851134
+        },
+        {
+          "agent": "DecisionAgent",
+          "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+          "retrieval_count": 10,
+          "validation_status": null,
           "elapsed_ms": null
+        }
+      ],
+      "validation": {
+        "status": "VALID_ABSTENTION",
+        "unsupported_claims": []
+      },
+      "missing_evidence_count": 2,
+      "deduction_count": 0
+    },
+    {
+      "case_id": "PUB-012",
+      "case_type": "Public",
+      "expected": "NOT_ADMISSIBLE",
+      "actual": "NEEDS_REVIEW",
+      "correct": false,
+      "confidence": 0.4,
+      "payable_amount": null,
+      "key_findings": [
+        "Claim occurs after the general 30-day waiting period.",
+        "Hospitalization meets the 24-hour minimum duration requirement.",
+        "Unproven or experimental treatment is excluded under the policy."
+      ],
+      "applicable_limits": [
+        "Room rent: 1% of Basic Sum Insured per day.",
+        "ICU: 2% of Basic Sum Insured per day.",
+        "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
+        "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
+        "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
+      ],
+      "missing_evidence": [
+        "Hospital registration status is not documented.",
+        "Hospital minimum eligibility criteria are not documented.",
+        "Medical necessity is not documented."
+      ],
+      "deductions": [],
+      "citation_count": 8,
+      "citations": [
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_02"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 7,
+          "section": "WHAT WE COVER",
+          "chunk_id": "policy_p7_chunk_03"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_02"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_01"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 10,
+          "section": "What We cover",
+          "chunk_id": "policy_p10_chunk_02"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "CaseAnalysisAgent",
+          "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
+          "retrieval_count": 0,
+          "validation_status": "NOT_VALIDATED",
+          "elapsed_ms": 0.0
+        },
+        {
+          "agent": "PolicyEvidenceAgent",
+          "action": "Generated 6 policy queries, combined dense and sparse retrieval, fused 39 unique candidates, and performed one reranking pass.",
+          "retrieval_count": 10,
+          "validation_status": "NOT_VALIDATED",
+          "elapsed_ms": 37867.447
+        },
+        {
+          "agent": "CoverageAgent",
+          "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
+          "retrieval_count": 10,
+          "validation_status": null,
+          "elapsed_ms": 0.030800001695752144
+        },
+        {
+          "agent": "DecisionAgent",
+          "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+          "retrieval_count": 10,
+          "validation_status": null,
+          "elapsed_ms": null
+        }
+      ],
+      "validation": {
+        "status": "VALID_ABSTENTION",
+        "unsupported_claims": []
+      },
+      "missing_evidence_count": 3,
+      "deduction_count": 0
+    },
+    {
+      "case_id": "CUS-001",
+      "case_type": "Custom",
+      "expected": "ADMISSIBLE",
+      "actual": "ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.8,
+      "payable_amount": 144800.0,
+      "key_findings": [
+        "Claim occurs after the general 30-day waiting period.",
+        "Hospitalization meets the 24-hour minimum duration requirement."
+      ],
+      "applicable_limits": [
+        "Room rent: 1% of Basic Sum Insured per day.",
+        "ICU: 2% of Basic Sum Insured per day.",
+        "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
+        "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
+        "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
+      ],
+      "missing_evidence": [],
+      "deductions": [],
+      "citation_count": 8,
+      "citations": [
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_02"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 7,
+          "section": "WHAT WE COVER",
+          "chunk_id": "policy_p7_chunk_03"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_03"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_01"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_02"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 7,
+          "section": "WHAT WE COVER",
+          "chunk_id": "policy_p7_chunk_02"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_04"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 10,
+          "section": "What We cover",
+          "chunk_id": "policy_p10_chunk_02"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "CaseAnalysisAgent",
+          "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
+          "retrieval_count": 0,
+          "validation_status": "NOT_VALIDATED",
+          "elapsed_ms": 0.0
+        },
+        {
+          "agent": "PolicyEvidenceAgent",
+          "action": "Generated 4 policy queries, combined dense and sparse retrieval, fused 30 unique candidates, and performed one reranking pass.",
+          "retrieval_count": 10,
+          "validation_status": "NOT_VALIDATED",
+          "elapsed_ms": 26582.402
+        },
+        {
+          "agent": "CoverageAgent",
+          "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
+          "retrieval_count": 10,
+          "validation_status": null,
+          "elapsed_ms": 0.10999999358318746
         },
         {
           "agent": "DecisionAgent",
@@ -3791,18 +3832,18 @@
       "citation_count": 8,
       "citations": [
         {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_02"
-        },
-        {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 7,
           "section": "WHAT WE COVER",
           "chunk_id": "policy_p7_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_02"
         },
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -3812,11 +3853,25 @@
           "chunk_id": "policy_p8_chunk_03"
         },
         {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_01"
+        },
+        {
           "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 5,
           "section": "benefits",
           "chunk_id": "policy_p5_chunk_03"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 10,
+          "section": "What We cover",
+          "chunk_id": "policy_p10_chunk_03"
         },
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -3830,21 +3885,7 @@
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 9,
           "section": "Waiting Period",
-          "chunk_id": "policy_p9_chunk_02"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 2,
-          "section": "UNKNOWN",
-          "chunk_id": "policy_p2_chunk_03"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 1,
-          "section": "DEFINITIONS",
-          "chunk_id": "policy_p1_chunk_02"
+          "chunk_id": "policy_p9_chunk_01"
         }
       ],
       "trace": [
@@ -3857,17 +3898,17 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused 27 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 35070.21000000001
+          "elapsed_ms": 22398.495
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
-          "elapsed_ms": null
+          "elapsed_ms": 0.039000005926936865
         },
         {
           "agent": "DecisionAgent",
@@ -3888,132 +3929,14 @@
       "case_id": "CUS-003",
       "case_type": "Custom",
       "expected": "NOT_ADMISSIBLE",
-      "actual": "NOT_ADMISSIBLE",
-      "correct": true,
-      "confidence": 0.9,
-      "payable_amount": 0.0,
-      "key_findings": [
-        "Claim occurs after the general 30-day waiting period.",
-        "Hospitalization meets the 24-hour minimum duration requirement.",
-        "Pre-existing disease remains within the applicable waiting period."
-      ],
-      "applicable_limits": [
-        "Room rent: 1% of Basic Sum Insured per day.",
-        "ICU: 2% of Basic Sum Insured per day.",
-        "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
-        "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
-        "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
-      ],
-      "missing_evidence": [],
-      "deductions": [],
-      "citation_count": 8,
-      "citations": [
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_02"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_03"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 5,
-          "section": "benefits",
-          "chunk_id": "policy_p5_chunk_01"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 3,
-          "section": "benefits",
-          "chunk_id": "policy_p3_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_01"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 7,
-          "section": "WHAT WE COVER",
-          "chunk_id": "policy_p7_chunk_02"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 5,
-          "section": "benefits",
-          "chunk_id": "policy_p5_chunk_03"
-        }
-      ],
-      "trace": [
-        {
-          "agent": "CaseAnalysisAgent",
-          "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
-          "retrieval_count": 0,
-          "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 0.0
-        },
-        {
-          "agent": "PolicyEvidenceAgent",
-          "action": "Generated 4 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
-          "retrieval_count": 10,
-          "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 46218.277
-        },
-        {
-          "agent": "CoverageAgent",
-          "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
-          "retrieval_count": 10,
-          "validation_status": null,
-          "elapsed_ms": null
-        },
-        {
-          "agent": "DecisionAgent",
-          "action": "Generated NOT_ADMISSIBLE from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
-          "retrieval_count": 10,
-          "validation_status": null,
-          "elapsed_ms": null
-        }
-      ],
-      "validation": {
-        "status": "VALID",
-        "unsupported_claims": []
-      },
-      "missing_evidence_count": 0,
-      "deduction_count": 0
-    },
-    {
-      "case_id": "CUS-004",
-      "case_type": "Custom",
-      "expected": "NEEDS_REVIEW",
       "actual": "NEEDS_REVIEW",
-      "correct": true,
+      "correct": false,
       "confidence": 0.4,
       "payable_amount": null,
       "key_findings": [
         "Claim occurs after the general 30-day waiting period.",
         "Hospitalization meets the 24-hour minimum duration requirement.",
-        "No applicable policy sub-limit deduction was identified from the supplied claim facts."
+        "Pre-existing disease remains within the applicable waiting period."
       ],
       "applicable_limits": [
         "Room rent: 1% of Basic Sum Insured per day.",
@@ -4031,13 +3954,6 @@
       "citation_count": 8,
       "citations": [
         {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_02"
-        },
-        {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 7,
@@ -4047,9 +3963,16 @@
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 10,
+          "section": "What We cover",
+          "chunk_id": "policy_p10_chunk_03"
         },
         {
           "claim": "Claim occurs after the general 30-day waiting period.",
@@ -4059,20 +3982,6 @@
           "chunk_id": "policy_p5_chunk_02"
         },
         {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 5,
-          "section": "benefits",
-          "chunk_id": "policy_p5_chunk_03"
-        },
-        {
-          "claim": "Claim occurs after the general 30-day waiting period.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 9,
-          "section": "Waiting Period",
-          "chunk_id": "policy_p9_chunk_02"
-        },
-        {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 7,
@@ -4080,11 +3989,25 @@
           "chunk_id": "policy_p7_chunk_02"
         },
         {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_01"
+        },
+        {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 2,
-          "section": "UNKNOWN",
-          "chunk_id": "policy_p2_chunk_03"
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_04"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_01"
         }
       ],
       "trace": [
@@ -4097,17 +4020,138 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 4 policy queries, combined dense and sparse retrieval, fused 32 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 35262.142
+          "elapsed_ms": 28659.905
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
+          "elapsed_ms": 0.035699980799108744
+        },
+        {
+          "agent": "DecisionAgent",
+          "action": "Generated NEEDS_REVIEW from structured coverage analysis, policy exclusions, waiting periods, missing evidence, and deductions.",
+          "retrieval_count": 10,
+          "validation_status": null,
           "elapsed_ms": null
+        }
+      ],
+      "validation": {
+        "status": "VALID_ABSTENTION",
+        "unsupported_claims": []
+      },
+      "missing_evidence_count": 3,
+      "deduction_count": 0
+    },
+    {
+      "case_id": "CUS-004",
+      "case_type": "Custom",
+      "expected": "NEEDS_REVIEW",
+      "actual": "NEEDS_REVIEW",
+      "correct": true,
+      "confidence": 0.4,
+      "payable_amount": null,
+      "key_findings": [
+        "Claim occurs after the general 30-day waiting period.",
+        "Hospitalization meets the 24-hour minimum duration requirement."
+      ],
+      "applicable_limits": [
+        "Room rent: 1% of Basic Sum Insured per day.",
+        "ICU: 2% of Basic Sum Insured per day.",
+        "Medical practitioner/consultant/surgeon: 25% of Sum Insured.",
+        "Medicines/diagnostics and related expenses: 40% of Sum Insured.",
+        "Ambulance: 1% of Basic Sum Insured or ₹1,000, whichever is less."
+      ],
+      "missing_evidence": [
+        "Hospital registration status is not documented.",
+        "Hospital minimum eligibility criteria are not documented.",
+        "Medical necessity is not documented."
+      ],
+      "deductions": [],
+      "citation_count": 8,
+      "citations": [
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 7,
+          "section": "WHAT WE COVER",
+          "chunk_id": "policy_p7_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_02"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 8,
+          "section": "WHAT WE EXCLUDE",
+          "chunk_id": "policy_p8_chunk_03"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 10,
+          "section": "What We cover",
+          "chunk_id": "policy_p10_chunk_03"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_03"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 7,
+          "section": "WHAT WE COVER",
+          "chunk_id": "policy_p7_chunk_02"
+        },
+        {
+          "claim": "Claim occurs after the general 30-day waiting period.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 9,
+          "section": "Waiting Period",
+          "chunk_id": "policy_p9_chunk_04"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "CaseAnalysisAgent",
+          "action": "Parsed claim attributes, calculated coverage duration, and identified missing evidence.",
+          "retrieval_count": 0,
+          "validation_status": "NOT_VALIDATED",
+          "elapsed_ms": 0.0
+        },
+        {
+          "agent": "PolicyEvidenceAgent",
+          "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused 27 unique candidates, and performed one reranking pass.",
+          "retrieval_count": 10,
+          "validation_status": "NOT_VALIDATED",
+          "elapsed_ms": 22459.616
+        },
+        {
+          "agent": "CoverageAgent",
+          "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
+          "retrieval_count": 10,
+          "validation_status": null,
+          "elapsed_ms": 0.035900011425837874
         },
         {
           "agent": "DecisionAgent",
@@ -4163,6 +4207,13 @@
           "chunk_id": "policy_p7_chunk_03"
         },
         {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 10,
+          "section": "What We cover",
+          "chunk_id": "policy_p10_chunk_03"
+        },
+        {
           "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 5,
@@ -4170,18 +4221,25 @@
           "chunk_id": "policy_p5_chunk_03"
         },
         {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 8,
-          "section": "WHAT WE EXCLUDE",
-          "chunk_id": "policy_p8_chunk_03"
+          "page": 5,
+          "section": "benefits",
+          "chunk_id": "policy_p5_chunk_02"
         },
         {
           "claim": "Claim occurs after the general 30-day waiting period.",
           "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
           "page": 9,
           "section": "Waiting Period",
-          "chunk_id": "policy_p9_chunk_02"
+          "chunk_id": "policy_p9_chunk_01"
+        },
+        {
+          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
+          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+          "page": 6,
+          "section": "Exclusions",
+          "chunk_id": "policy_p6_chunk_01"
         },
         {
           "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
@@ -4189,20 +4247,6 @@
           "page": 7,
           "section": "WHAT WE COVER",
           "chunk_id": "policy_p7_chunk_02"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 2,
-          "section": "UNKNOWN",
-          "chunk_id": "policy_p2_chunk_03"
-        },
-        {
-          "claim": "Hospitalization meets the 24-hour minimum duration requirement.",
-          "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-          "page": 3,
-          "section": "benefits",
-          "chunk_id": "policy_p3_chunk_02"
         }
       ],
       "trace": [
@@ -4215,17 +4259,17 @@
         },
         {
           "agent": "PolicyEvidenceAgent",
-          "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused results and reranked evidence.",
+          "action": "Generated 3 policy queries, combined dense and sparse retrieval, fused 30 unique candidates, and performed one reranking pass.",
           "retrieval_count": 10,
           "validation_status": "NOT_VALIDATED",
-          "elapsed_ms": 35414.112
+          "elapsed_ms": 25574.736999999997
         },
         {
           "agent": "CoverageAgent",
           "action": "Evaluated waiting periods, exclusions, facility eligibility, policy limits, and expense admissibility.",
           "retrieval_count": 10,
           "validation_status": null,
-          "elapsed_ms": null
+          "elapsed_ms": 0.028499984182417393
         },
         {
           "agent": "DecisionAgent",

@@ -76,17 +76,18 @@ class DecisionAgent:
         decision = "ADMISSIBLE"
         confidence = 0.80
 
-        # Clear exclusions and failed waiting periods take
-        # precedence over everything else.
-        if exclusions or waiting_failures:
-            decision = "NOT_ADMISSIBLE"
-            confidence = 0.90
-
-        # If eligibility cannot be established because material
-        # evidence is missing, abstain.
-        elif missing_evidence:
+        # Material missing evidence requires abstention.
+        # We must not convert an unresolved eligibility fact
+        # into a definitive rejection.
+        if missing_evidence:
             decision = "NEEDS_REVIEW"
             confidence = 0.40
+
+        # Clear exclusions and failed waiting periods are
+        # definitive only when the required evidence is present.
+        elif exclusions or waiting_failures:
+            decision = "NOT_ADMISSIBLE"
+            confidence = 0.90
 
         # Valid claim with applicable deductions.
         elif deductions:
