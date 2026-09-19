@@ -3,7 +3,4 @@ __pycache__/
 *.pyc
 .env
 .pytest_cache/
-indexes/
-eval/results/
-.vscode/
-.idea/
+.streamlit/secrets.toml

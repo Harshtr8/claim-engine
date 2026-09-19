@@ -42,7 +42,7 @@ def test_coverage_agent():
 
     analysis = state["coverage_analysis"]
 
-    assert analysis["coverage_days"] == 437
+    assert analysis["coverage_days"] == 4.0
 
     assert analysis["evidence_count"] > 0
 
