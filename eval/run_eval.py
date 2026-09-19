@@ -3,6 +3,7 @@ import json
 from typing import Any
 
 from app.orchestrator.graph import ClaimEngine
+from app.schemas.decision import DecisionOutput
 from eval.case_adapter import adapt_public_case
 
 
@@ -342,6 +343,81 @@ def normalize_decision(decision: Any) -> str:
 
 
 # ============================================================
+# DECISION OUTPUT UNWRAPPING
+# ============================================================
+
+def unwrap_decision_output(output: Any) -> DecisionOutput:
+    """Extract the real DecisionOutput from ClaimEngine.analyze()."""
+
+    if isinstance(output, DecisionOutput):
+        return output
+
+    if isinstance(output, dict):
+        decision_value = output.get("decision")
+
+        if isinstance(decision_value, DecisionOutput):
+            return decision_value
+
+        if isinstance(decision_value, dict):
+            try:
+                return DecisionOutput.model_validate(decision_value)
+            except AttributeError:
+                return DecisionOutput.parse_obj(decision_value)
+
+        if "case_id" in output and "decision" in output:
+            try:
+                return DecisionOutput.model_validate(output)
+            except AttributeError:
+                return DecisionOutput.parse_obj(output)
+
+    decision_value = get_field(output, "decision", None)
+
+    if isinstance(decision_value, DecisionOutput):
+        return decision_value
+
+    if isinstance(decision_value, dict):
+        try:
+            return DecisionOutput.model_validate(decision_value)
+        except AttributeError:
+            return DecisionOutput.parse_obj(decision_value)
+
+    if hasattr(output, "model_dump"):
+        try:
+            dumped = output.model_dump()
+            if isinstance(dumped, dict):
+                decision_value = dumped.get("decision")
+                if isinstance(decision_value, DecisionOutput):
+                    return decision_value
+                if isinstance(decision_value, dict):
+                    try:
+                        return DecisionOutput.model_validate(decision_value)
+                    except AttributeError:
+                        return DecisionOutput.parse_obj(decision_value)
+        except Exception:
+            pass
+
+    if hasattr(output, "dict"):
+        try:
+            dumped = output.dict()
+            if isinstance(dumped, dict):
+                decision_value = dumped.get("decision")
+                if isinstance(decision_value, DecisionOutput):
+                    return decision_value
+                if isinstance(decision_value, dict):
+                    try:
+                        return DecisionOutput.model_validate(decision_value)
+                    except AttributeError:
+                        return DecisionOutput.parse_obj(decision_value)
+        except Exception:
+            pass
+
+    raise TypeError(
+        "Could not extract DecisionOutput from ClaimEngine result. "
+        f"Returned type: {type(output).__name__}"
+    )
+
+
+# ============================================================
 # SINGLE CASE EVALUATION
 # ============================================================
 
@@ -386,64 +462,64 @@ def evaluate_case(
     # Extract output fields
     # --------------------------------------------------------
 
+    # ClaimEngine returns a state containing a DecisionOutput.
+    # Unwrap it before extracting fields.
+    decision_output = unwrap_decision_output(output)
+
     actual_decision = normalize_decision(
-        get_field(
-            output,
-            "decision",
-            "",
-        )
+        get_field(decision_output, "decision", "")
     )
 
     confidence = get_field(
-        output,
+        decision_output,
         "confidence",
         None,
     )
 
     payable_amount = get_field(
-        output,
+        decision_output,
         "payable_amount",
         None,
     )
 
     key_findings = get_field(
-        output,
+        decision_output,
         "key_findings",
         [],
     ) or []
 
     applicable_limits = get_field(
-        output,
+        decision_output,
         "applicable_limits",
         [],
     ) or []
 
     missing_evidence = get_field(
-        output,
+        decision_output,
         "missing_evidence",
         [],
     ) or []
 
     deductions = get_field(
-        output,
+        decision_output,
         "deductions",
         [],
     ) or []
 
     citations_raw = get_field(
-        output,
+        decision_output,
         "citations",
         [],
     ) or []
 
     trace_raw = get_field(
-        output,
+        decision_output,
         "trace",
         [],
     ) or []
 
     validation_raw = get_field(
-        output,
+        decision_output,
         "validation",
         None,
     )

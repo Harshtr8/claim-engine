@@ -1,9 +1,9 @@
 {
   "cases_evaluated": 17,
   "total_citations": 136,
-  "valid_citations": 0,
-  "invalid_citations": 136,
-  "citation_validity": 0.0,
+  "valid_citations": 136,
+  "invalid_citations": 0,
+  "citation_validity": 1.0,
   "cases_with_citations": 17,
   "cases_without_citations": 0,
   "citation_coverage": 1.0,
